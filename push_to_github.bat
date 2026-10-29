@@ -1,19 +1,22 @@
 @echo off
-title Push Project to GitHub
+title Auto-Sync to GitHub (Live Website Update)
 echo ========================================================
-echo  PUSHING STUDENT PERFORMANCE INTELLIGENCE TO GITHUB
-echo  Repository: https://github.com/satyajeets657-hub/Student-Performance-Intelligence
+echo  UPDATING LIVE WEBSITE VIA GITHUB
+echo  Live URL: https://satyajeets657-hub.github.io/Student-Performance-Intelligence/
 echo ========================================================
 echo.
-git push -u origin main
+git add -A
+git commit -m "Update project changes"
+git push origin main
 echo.
 if %ERRORLEVEL% EQU 0 (
     echo ========================================================
-    echo  SUCCESS: Project successfully pushed to GitHub!
+    echo  SUCCESS: Code pushed! Your live website will update
+    echo  automatically within 30-60 seconds!
     echo ========================================================
 ) else (
     echo ========================================================
-    echo  Push was not completed. Please check your GitHub login.
+    echo  Sync could not be completed. Please check your network.
     echo ========================================================
 )
 pause
