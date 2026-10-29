@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Performance Intelligence System - Academic Project Report</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #3b82f6;
+    --secondary: #0f172a;
+    --accent: #0284c7;
+    --bg-light: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #cbd5e1;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-main);
+    background-color: #f1f5f9;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .print-bar {
+    background: #1e293b;
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  .print-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .print-btn:hover {
+    background: #1d4ed8;
+  }
+
+  .document-container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 50px 60px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 8px;
+  }
+
+  .cover-page {
+    text-align: center;
+    padding: 80px 20px 100px;
+    border-bottom: 3px double var(--primary);
+    margin-bottom: 40px;
+  }
+
+  .institution-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+
+  .cover-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--secondary);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .cover-subtitle {
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: left;
+    background: #f8fafc;
+    padding: 24px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .meta-item strong {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .meta-item span {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--secondary);
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--primary);
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    margin-top: 36px;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: var(--secondary);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    text-align: justify;
+  }
+
+  ul, ol {
+    margin-left: 24px;
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 24px;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 9px 12px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 700;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+
+  .formula-box {
+    background: #eff6ff;
+    border-left: 4px solid var(--primary-light);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 6px 6px 0;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 13px;
+    color: #1e3a8a;
+    font-weight: 600;
+  }
+
+  .qa-card {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+  }
+
+  .qa-card h4 {
+    color: #1e40af;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .qa-card p {
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-green { background: #dcfce7; color: #166534; }
+  .tag-amber { background: #fef3c7; color: #92400e; }
+  .tag-red   { background: #fee2e2; color: #991b1b; }
+
+  @media print {
+    body {
+      background: #ffffff;
+      color: #000000;
+      font-size: 12pt;
+    }
+    .print-bar {
+      display: none !important;
+    }
+    .document-container {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+    th, td {
+      border: 1px solid #94a3b8;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div>
+    <strong>Student Performance Intelligence System</strong> &mdash; Printable Academic Documentation
+  </div>
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF (Ctrl + P)</button>
+</div>
+
+<div class="document-container">
+
+  <!-- COVER PAGE -->
+  <div class="cover-page">
+    <div class="institution-badge">Academic Project Documentation</div>
+    <h1 class="cover-title">STUDENT PERFORMANCE INTELLIGENCE SYSTEM</h1>
+    <div class="cover-subtitle">An Explainable Academic Analytics & Early Warning Platform</div>
+
+    <p style="text-align: center; max-width: 650px; margin: 0 auto; color: var(--text-muted);">
+      A holistic, rule-based decision-support system featuring multi-dimensional risk scoring, 
+      department benchmarking, student self-service simulations, and dedicated educator cockpits.
+    </p>
+
+    <div class="cover-meta-grid">
+      <div class="meta-item">
+        <strong>Author & Presenter</strong>
+        <span>Satyajeet Singh</span>
+      </div>
+      <div class="meta-item">
+        <strong>Department</strong>
+        <span>Department of Data Science</span>
+      </div>
+      <div class="meta-item">
+        <strong>Technology Stack</strong>
+        <span>Python, Flask, SQLite3, Pandas</span>
+      </div>
+      <div class="meta-item">
+        <strong>Project Type</strong>
+        <span>Web-Based Intelligence System</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 1 -->
+  <h2>1. Executive Summary & Problem Definition</h2>
+  <p>
+    Educational institutions generate vast amounts of operational data across classrooms, labs, and internal tests. 
+    However, this data often sits isolated in disparate files, leaving mentors and instructors unable to identify at-risk 
+    students before terminal examinations. Traditional machine learning attempts often act as "black-box" classifiers, 
+    failing to explain the root pedagogical cause to either the instructor or the student.
+  </p>
+  <p>
+    The <strong>Student Performance Intelligence System</strong> addresses this critical bottleneck by replacing obscure predictive models 
+    with a completely <strong>transparent, explainable rule-based analytical engine</strong>. The system unifies continuous assessments, 
+    attendance telemetry, lab participation, and study habits into standardized, actionable scores.
+  </p>
+
+  <!-- SECTION 2 -->
+  <h2>2. System Architecture & Tech Stack</h2>
+  <p>
+    The system follows a clean Model-View-Controller (MVC) architectural separation engineered in Python and lightweight web standards:
+  </p>
+  <ul>
+    <li><strong>Application Layer:</strong> Flask 3.1 WSGI framework handling session authentication, role authorization, and REST endpoints.</li>
+    <li><strong>Intelligence & Analytics Engine:</strong> Pandas and NumPy executing vectorized score formulas, percentiles, and risk matrices.</li>
+    <li><strong>Persistence Layer:</strong> Embedded SQLite3 relational database (<code>student_intelligence.db</code>) with full referential integrity.</li>
+    <li><strong>Client Presentation Layer:</strong> Responsive, zero-dependency HTML5, CSS3, and JavaScript ensuring compatibility across mobile, tablet, and desktop viewports.</li>
+  </ul>
+
+  <!-- SECTION 3 -->
+  <h2>3. Analytical Formulations & Weights</h2>
+  <p>
+    Every student is evaluated using a weighted multi-criteria formulation where summative outcomes and engagement behaviors are balanced:
+  </p>
+
+  <div class="formula-box">
+    Study Score = min((Study_Hours / 6) * 100, 100)<br>
+    Performance Score = (Final_Marks * 0.35) + (Attendance * 0.15) + (Study_Score * 0.10) +<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Assignment_Score * 0.10) + (Quiz_Average * 0.10) +<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Practical_Score * 0.10) + (Internal_Marks * 0.10)
+  </div>
+
+  <h3>Performance Status Tiers</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Score Range</th>
+        <th>Status Label</th>
+        <th>Pedagogical Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>85.0 - 100.0</strong></td>
+        <td><span class="tag tag-green">Excellent</span></td>
+        <td>Consistently high mastery across theory, labs, and attendance.</td>
+      </tr>
+      <tr>
+        <td><strong>70.0 - 84.9</strong></td>
+        <td><span class="tag tag-green">Good</span></td>
+        <td>Strong performance baseline with minor areas for optimization.</td>
+      </tr>
+      <tr>
+        <td><strong>55.0 - 69.9</strong></td>
+        <td><span class="tag tag-amber">Stable</span></td>
+        <td>Comfortable passing state; requires structured study habits to excel.</td>
+      </tr>
+      <tr>
+        <td><strong>40.0 - 54.9</strong></td>
+        <td><span class="tag tag-amber">Attention</span></td>
+        <td>Borderline passing; vulnerable to failure without timely intervention.</td>
+      </tr>
+      <tr>
+        <td><strong>&lt; 40.0</strong></td>
+        <td><span class="tag tag-red">High Risk</span></td>
+        <td>Severe academic distress requiring mandatory remedial support.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 4 -->
+  <h2>4. Multi-Factor Risk Assessment Engine</h2>
+  <p>
+    Risk is not evaluated merely on marks alone. Attendance and daily self-study habits serve as leading indicators of imminent failure:
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Threshold Condition</th>
+        <th>Risk Points Added</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Attendance</td><td>Below 60% / 60-74.9% / 75-84.9%</td><td>+3 / +2 / +1</td></tr>
+      <tr><td>Study Hours</td><td>Under 2.0 hrs/day / Under 4.0 hrs/day</td><td>+3 / +1</td></tr>
+      <tr><td>Final Marks</td><td>Under 50 / 50-64.9 / 65-74.9</td><td>+3 / +2 / +1</td></tr>
+      <tr><td>Practical Marks</td><td>Under 50</td><td>+2</td></tr>
+      <tr><td>Assignment Score</td><td>Under 50</td><td>+2</td></tr>
+      <tr><td>Quiz Average</td><td>Under 50</td><td>+2</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Classification:</strong> Score &ge; 6 &rarr; <span class="tag tag-red">High Risk (High Priority)</span> | 
+    Score 3-5 &rarr; <span class="tag tag-amber">Medium Risk (Needs Support)</span> | 
+    Score 0-2 &rarr; <span class="tag tag-green">Low Risk (Normal)</span>
+  </p>
+
+  <!-- SECTION 5 -->
+  <h2>5. Key Application Modules & Features</h2>
+  <h3>5.1 Teacher Cockpit Dashboard</h3>
+  <ul>
+    <li><strong>Cohort Metric Tiles:</strong> Immediate visibility of total class enrollment, average attendance, and counts of students flagged for urgent support.</li>
+    <li><strong>Local AI Assistant:</strong> Provides instant responses to natural language queries regarding class status, low attendance lists, and department breakdowns without requiring expensive third-party APIs.</li>
+    <li><strong>Student Profile Deep-Dive:</strong> Generates individual diagnostic cards highlighting subject-specific strengths (&ge;80%) and improvement areas (&lt;65%).</li>
+  </ul>
+
+  <h3>5.2 Student Self-Service Portal & What-If Simulator</h3>
+  <ul>
+    <li><strong>Personalized Scorecard:</strong> Shows the student their score, department benchmark gap, and exact feedback.</li>
+    <li><strong>Interactive What-If Simulator:</strong> Lets students adjust their attendance and study hour sliders to see simulated improvements in their score before final exams.</li>
+    <li><strong>Study Material Bank:</strong> Instant access to course notes, revision sheets, and previous question papers.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 6 -->
+  <h2>6. Viva Voce & Oral Defense Preparation</h2>
+
+  <div class="qa-card">
+    <h4>Q1: Why was a rule-based algorithm chosen over Machine Learning models?</h4>
+    <p>
+      <strong>Answer:</strong> Educational institutions require explainability and transparency. A machine learning model like a neural network or random forest functions as a black box—it tells you a student might fail, but cannot easily audit why. Our rule-based system provides a clear, mathematical justification that both teachers and students can trust and act upon.
+    </p>
+  </div>
+
+  <div class="qa-card">
+    <h4>Q2: What is the purpose of the Department Benchmark & Performance Gap?</h4>
+    <p>
+      <strong>Answer:</strong> Grading standards often vary across departments. Comparing raw scores would produce misleading results. By subtracting the departmental mean from the student's individual score, the Performance Gap isolates whether a student is performing above or below their immediate peer group.
+    </p>
+  </div>
+
+  <div class="qa-card">
+    <h4>Q3: How is user data secured within the system?</h4>
+    <p>
+      <strong>Answer:</strong> All passwords are encrypted with one-way SHA-256 cryptographic hashes. Access is governed by strict Role-Based Access Control (RBAC): students can strictly only view their own records, while teachers possess class-wide analytical privileges.
+    </p>
+  </div>
+
+  <div class="qa-card">
+    <h4>Q4: How does the What-If Simulator benefit student psychology?</h4>
+    <p>
+      <strong>Answer:</strong> Traditional report cards are retrospective (they show past mistakes). The What-If Simulator is prospective: it empowers students to see how actionable habit changes today (such as increasing study time by 2 hours) will directly boost their future performance score.
+    </p>
+  </div>
+
+  <div class="qa-card">
+    <h4>Q5: How can this system be deployed for public access?</h4>
+    <p>
+      <strong>Answer:</strong> The project is fully cloud-ready with <code>Procfile</code>, <code>render.yaml</code>, and <code>wsgi.py</code>. By connecting the GitHub repository to cloud platforms such as Render or PythonAnywhere, it deploys automatically with a free live public URL.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px;">
+    <strong>Student Performance Intelligence System</strong> &bull; Presented by Satyajeet Singh (Department of Data Science) &bull; Project Documentation Report
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+Student_ID,Name,Gender,Department,Semester,Attendance,Study_Hours,Assignment_Submission_Rate,Assignment_Score,Quiz_Average,Practical_Score,Internal_Marks,Previous_Semester_Score,Participation_Score,Extra_Curricular,Final_Marks,Grade,Performance_Score,Performance_Status,Support_Flag,Department_Average,Performance_Gap,Primary_Insight
+ST0270,Rahul Verma,Male,Computer Science,3,69.2,1.1,65.4,77.0,59.0,63.0,56.0,72.0,67.0,Occasional,58.0,C,58.0,Stable,High Priority,78.5,-20.5,Improve attendance
+ST0135,Aditya Agarwal,Male,Artificial Intelligence,4,76.4,1.0,68.3,69.0,60.0,71.0,63.0,64.0,61.0,Active,58.0,C,59.7,Stable,High Priority,78.9,-19.2,Increase study hours
+ST0085,Ananya Gupta,Male,Data Science,2,57.9,2.1,64.5,87.0,46.0,83.0,56.0,73.0,90.0,,59.0,C,60.0,Stable,High Priority,79.6,-19.6,Improve attendance
+ST0402,Satyam Verma,Male,Information Technology,5,77.0,1.6,95.5,78.0,44.0,74.0,53.0,76.0,69.0,Occasional,61.0,B,60.5,Stable,High Priority,78.8,-18.3,Increase study hours
+ST0239,Aarav Singh,Female,Computer Science,2,84.1,1.0,73.1,79.0,55.0,77.0,62.0,70.0,63.0,Active,57.0,C,61.5,Stable,High Priority,78.5,-17.0,Increase study hours
+ST0340,Ishaan Gupta,Male,Computer Science,6,63.0,2.0,65.5,93.0,54.0,84.0,58.0,70.0,90.0,Occasional,59.0,C,62.3,Stable,Needs Support,78.5,-16.2,Improve attendance
+ST0163,Neha Gupta,Female,Artificial Intelligence,3,72.7,1.7,64.7,82.0,48.0,70.0,64.0,71.0,69.0,Occasional,64.0,B,62.5,Stable,High Priority,78.9,-16.4,Increase study hours
+ST0041,Priya Verma,Male,Data Science,4,69.9,1.0,59.6,73.0,55.0,72.0,64.0,73.0,89.0,,69.0,B,62.7,Stable,High Priority,79.6,-16.9,Improve attendance
+ST0385,Aditya Mishra,Female,Data Science,3,77.3,1.7,65.1,74.0,66.0,73.0,56.0,95.0,64.0,Occasional,61.0,B,62.7,Stable,High Priority,79.6,-16.9,Increase study hours
+ST0237,Rohan Verma,Female,Artificial Intelligence,6,71.9,2.6,62.7,73.0,52.0,75.0,66.0,91.0,70.0,Occasional,61.0,B,63.1,Stable,Needs Support,78.9,-15.8,Submit assignments regularly
+ST0033,Rahul Gupta,Female,Data Science,2,74.3,2.1,81.1,85.0,53.0,64.0,63.0,95.0,92.0,Occasional,64.0,B,63.5,Stable,Needs Support,79.6,-16.1,Focus on quizzes
+ST0338,Yash Yadav,Male,Computer Science,5,82.6,1.9,96.0,93.0,51.0,74.0,63.0,79.0,85.0,Occasional,57.0,C,63.6,Stable,High Priority,78.5,-14.9,Increase study hours
+ST0278,Aditya Singh,Female,Artificial Intelligence,2,68.4,2.5,79.6,87.0,53.0,89.0,59.0,77.0,80.0,Active,59.0,C,63.9,Stable,Needs Support,78.9,-15.0,Improve attendance
+ST0030,Yash Sharma,Female,Computer Science,4,81.6,1.6,75.0,88.0,58.0,68.0,63.0,82.0,55.0,Occasional,61.0,B,64.0,Stable,High Priority,78.5,-14.5,Increase study hours
+ST0438,Aditi Kumar,Female,Information Technology,2,82.1,1.1,71.9,93.0,55.0,67.0,66.0,84.0,63.0,Active,63.0,B,64.3,Stable,High Priority,78.8,-14.5,Increase study hours
+ST0071,Satyam Agarwal,Male,Artificial Intelligence,2,68.3,2.3,57.9,86.0,55.0,77.0,66.0,75.0,61.0,Occasional,63.0,B,64.5,Stable,Needs Support,78.9,-14.4,Improve attendance
+ST0151,Aarav Kumar,Male,Data Science,3,77.9,1.0,76.8,88.0,60.0,64.0,69.0,95.0,73.0,,67.0,B,64.9,Stable,Needs Support,79.6,-14.7,Increase study hours
+ST0014,Rohan Pandey,Male,Data Science,2,78.7,2.1,78.5,88.0,57.0,76.0,56.0,86.0,74.0,Active,63.0,B,65.1,Stable,Needs Support,79.6,-14.5,Performance is stable
+ST0227,Ananya Pandey,Male,Information Technology,3,72.2,2.5,71.1,79.0,56.0,79.0,60.0,70.0,62.0,Occasional,65.0,B,65.1,Stable,Needs Support,78.8,-13.7,Performance is stable
+ST0194,Priya Pandey,Male,Computer Science,5,75.0,1.4,68.9,74.0,57.0,75.0,57.0,89.0,44.0,Occasional,72.0,B+,65.1,Stable,Needs Support,78.5,-13.4,Increase study hours
+ST0481,Aditi Pandey,Male,Computer Science,6,80.3,2.1,71.9,83.0,64.0,87.0,62.0,80.0,77.0,Occasional,58.0,C,65.4,Stable,Needs Support,78.5,-13.1,Performance is stable
+ST0474,Karan Yadav,Female,Computer Science,6,72.5,1.7,62.5,90.0,64.0,83.0,69.0,77.0,76.0,Occasional,62.0,B,66.0,Stable,High Priority,78.5,-12.5,Increase study hours
+ST0101,Nisha Gupta,Male,Information Technology,2,70.7,2.5,76.0,87.0,64.0,72.0,69.0,93.0,60.0,Active,63.0,B,66.0,Stable,Needs Support,78.8,-12.8,Performance is stable
+ST0126,Vivek Verma,Female,Information Technology,5,80.7,3.0,77.4,85.0,55.0,80.0,59.0,72.0,70.0,Active,60.0,B,66.0,Stable,Needs Support,78.8,-12.8,Performance is stable
+ST0256,Kavya Pandey,Male,Computer Science,5,75.7,1.9,80.4,90.0,61.0,81.0,64.0,59.0,70.0,Occasional,64.0,B,66.5,Stable,High Priority,78.5,-12.0,Increase study hours
+ST0308,Ananya Kumar,Female,Information Technology,4,83.8,1.3,71.4,92.0,55.0,80.0,71.0,88.0,82.0,Active,63.0,B,66.6,Stable,High Priority,78.8,-12.2,Increase study hours
+ST0006,Meera Singh,Male,Information Technology,4,70.7,2.7,79.0,84.0,74.0,77.0,60.0,64.0,73.0,Occasional,63.0,B,66.7,Stable,Needs Support,78.8,-12.1,Performance is stable
+ST0253,Sanya Srivastava,Male,Computer Science,6,69.1,2.9,79.3,77.0,68.0,81.0,65.0,91.0,79.0,,65.0,B,67.0,Stable,Needs Support,78.5,-11.5,Improve attendance
+ST0250,Diya Sharma,Male,Computer Science,6,76.8,1.7,78.3,99.0,62.0,77.0,68.0,79.0,83.0,Active,63.0,B,67.0,Stable,High Priority,78.5,-11.5,Increase study hours
+ST0022,Kavya Singh,Male,Information Technology,2,78.5,1.5,78.6,85.0,63.0,77.0,68.0,64.0,73.0,Occasional,67.0,B,67.0,Stable,Needs Support,78.8,-11.8,Increase study hours
+ST0479,Nisha Yadav,Male,Computer Science,5,67.6,2.8,66.8,80.0,68.0,73.0,64.0,90.0,79.0,Active,69.0,B,67.5,Stable,Needs Support,78.5,-11.0,Improve attendance
+ST0056,Aarav Yadav,Male,Artificial Intelligence,3,78.8,1.0,64.5,90.0,59.0,75.0,68.0,73.0,63.0,Occasional,71.0,B+,67.5,Stable,Needs Support,78.9,-11.4,Increase study hours
+ST0221,Priya Agarwal,Female,Artificial Intelligence,5,86.8,1.0,77.3,89.0,64.0,75.0,63.0,84.0,76.0,Active,68.0,B,67.6,Stable,Needs Support,78.9,-11.3,Increase study hours
+ST0388,Vivek Kumar,Male,Computer Science,3,85.9,1.7,64.0,83.0,54.0,74.0,63.0,88.0,79.0,Occasional,70.0,B+,67.6,Stable,Needs Support,78.5,-10.9,Increase study hours
+ST0176,Ananya Gupta,Male,Information Technology,6,75.5,3.1,75.0,88.0,72.0,72.0,64.0,70.0,78.0,,62.0,B,67.8,Stable,Needs Support,78.8,-11.0,Performance is stable
+ST0185,Arjun Gupta,Female,Artificial Intelligence,3,72.1,2.3,68.2,82.0,68.0,73.0,64.0,87.0,62.0,Active,70.0,B+,67.8,Stable,Needs Support,78.9,-11.1,Submit assignments regularly
+ST0467,Shreya Sharma,Female,Data Science,4,79.1,1.9,72.7,87.0,66.0,82.0,64.0,66.0,55.0,,66.0,B,68.0,Stable,Needs Support,79.6,-11.6,Increase study hours
+ST0382,Karan Gupta,Male,Computer Science,3,80.6,1.8,79.5,90.0,65.0,65.0,69.0,85.0,70.0,Occasional,69.0,B,68.1,Stable,Needs Support,78.5,-10.4,Increase study hours
+ST0016,Aarav Kumar,Female,Artificial Intelligence,2,77.1,2.8,70.2,71.0,65.0,83.0,58.0,67.0,60.0,Occasional,69.0,B,68.1,Stable,Needs Support,78.9,-10.8,Performance is stable
+ST0347,Priya Mishra,Female,Computer Science,2,81.0,2.9,67.4,88.0,62.0,83.0,73.0,88.0,73.0,Occasional,59.0,C,68.2,Stable,Needs Support,78.5,-10.3,Submit assignments regularly
+ST0360,Priya Pandey,Female,Computer Science,3,86.6,1.7,87.3,86.0,62.0,73.0,59.0,95.0,75.0,Occasional,70.0,B+,68.3,Stable,Needs Support,78.5,-10.2,Increase study hours
+ST0069,Aditya Pandey,Male,Data Science,6,88.4,1.6,76.9,94.0,68.0,74.0,61.0,82.0,90.0,,65.0,B,68.4,Stable,Needs Support,79.6,-11.2,Increase study hours
+ST0426,Shreya Singh,Female,Artificial Intelligence,6,88.1,1.0,77.1,83.0,60.0,80.0,64.0,84.0,74.0,Occasional,71.0,B+,68.4,Stable,Needs Support,78.9,-10.5,Increase study hours
+ST0222,Priya Sharma,Female,Data Science,2,78.9,2.0,79.4,100.0,59.0,84.0,66.0,72.0,93.0,,64.0,B,68.5,Stable,Needs Support,79.6,-11.1,Performance is stable
+ST0314,Aarav Mishra,Female,Information Technology,4,71.4,2.9,76.2,93.0,60.0,81.0,59.0,95.0,78.0,Occasional,68.0,B,68.6,Stable,Needs Support,78.8,-10.2,Performance is stable
+ST0486,Neha Mishra,Male,Artificial Intelligence,6,80.8,2.3,76.6,88.0,74.0,82.0,56.0,78.0,76.0,,65.0,B,68.7,Stable,Needs Support,78.9,-10.2,Performance is stable
+ST0215,Aditya Verma,Male,Computer Science,5,70.5,2.3,58.4,91.0,71.0,83.0,65.0,76.0,81.0,Occasional,67.0,B,68.9,Stable,Needs Support,78.5,-9.6,Submit assignments regularly
+ST0084,Vivek Srivastava,Male,Data Science,5,87.4,1.4,84.2,89.0,76.0,67.0,62.0,86.0,91.0,Occasional,69.0,B,69.0,Stable,Needs Support,79.6,-10.6,Increase study hours
+ST0478,Karan Pandey,Male,Computer Science,4,83.5,2.9,55.9,79.0,59.0,77.0,65.0,94.0,80.0,,69.0,B,69.5,Stable,Needs Support,78.5,-9.0,Submit assignments regularly
+ST0098,Shreya Mishra,Female,Computer Science,5,77.4,3.3,71.7,87.0,60.0,81.0,62.0,76.0,93.0,Active,67.0,B,69.6,Stable,Needs Support,78.5,-8.9,Performance is stable
+ST0049,Aarav Agarwal,Female,Computer Science,6,80.9,3.4,78.4,92.0,52.0,72.0,66.0,95.0,87.0,Active,68.0,B,69.8,Stable,Needs Support,78.5,-8.7,Focus on quizzes
+ST0093,Meera Pandey,Female,Computer Science,3,78.2,1.4,76.9,84.0,79.0,73.0,66.0,76.0,74.0,Occasional,73.0,B+,69.8,Stable,Needs Support,78.5,-8.7,Increase study hours
+ST0433,Vivek Kumar,Female,Data Science,2,74.0,2.7,71.6,87.0,74.0,81.0,77.0,87.0,66.0,Active,64.0,B,69.9,Stable,Needs Support,79.6,-9.7,Performance is stable
+ST0333,Aarav Yadav,Female,Computer Science,5,57.4,3.4,53.8,87.0,72.0,84.0,72.0,82.0,78.0,Active,69.0,B,69.9,Stable,Needs Support,78.5,-8.6,Improve attendance
+ST0243,Shreya Srivastava,Male,Information Technology,4,86.3,1.4,83.5,90.0,52.0,81.0,68.0,74.0,95.0,,73.0,B+,69.9,Stable,Needs Support,78.8,-8.9,Increase study hours
+ST0429,Vivek Gupta,Male,Computer Science,5,78.7,1.0,70.3,92.0,61.0,82.0,68.0,79.0,87.0,Occasional,75.0,B+,70.0,Good,Needs Support,78.5,-8.5,Increase study hours
+ST0231,Ishaan Kumar,Male,Information Technology,4,81.8,2.1,70.1,89.0,64.0,80.0,70.0,89.0,79.0,Occasional,69.0,B,70.2,Good,Needs Support,78.8,-8.6,Performance is stable
+ST0413,Aarav Agarwal,Female,Data Science,2,91.9,1.2,73.7,80.0,63.0,82.0,75.0,84.0,71.0,,70.0,B+,70.3,Good,Needs Support,79.6,-9.3,Increase study hours
+ST0418,Arjun Pandey,Male,Data Science,6,81.4,1.7,67.4,97.0,71.0,86.0,69.0,82.0,83.0,Occasional,66.0,B,70.4,Good,Needs Support,79.6,-9.2,Increase study hours
+ST0070,Vivek Singh,Male,Data Science,6,79.7,2.6,76.9,100.0,62.0,80.0,75.0,88.0,71.0,Active,65.0,B,70.7,Good,Needs Support,79.6,-8.9,Performance is stable
+ST0370,Shreya Yadav,Male,Computer Science,2,69.8,3.3,52.5,82.0,72.0,80.0,58.0,75.0,68.0,Active,73.0,B+,70.7,Good,Needs Support,78.5,-7.8,Improve attendance
+ST0118,Rohan Verma,Male,Information Technology,4,88.5,2.7,78.1,91.0,56.0,87.0,71.0,94.0,79.0,Occasional,64.0,B,70.7,Good,Needs Support,78.8,-8.1,Performance is stable
+ST0051,Satyam Srivastava,Male,Data Science,6,82.7,2.9,79.0,88.0,66.0,78.0,73.0,85.0,59.0,Active,66.0,B,70.8,Good,Needs Support,79.6,-8.8,Performance is stable
+ST0057,Aarav Agarwal,Female,Data Science,4,77.8,2.6,79.5,83.0,66.0,85.0,72.0,59.0,71.0,Occasional,69.0,B,70.8,Good,Needs Support,79.6,-8.8,Performance is stable
+ST0225,Kavya Agarwal,Male,Data Science,2,62.2,4.5,52.8,96.0,59.0,90.0,60.0,83.0,60.0,,67.0,B,70.8,Good,Needs Support,79.6,-8.8,Improve attendance
+ST0286,Ishaan Singh,Female,Data Science,3,89.6,1.4,96.6,100.0,65.0,81.0,71.0,80.0,71.0,Occasional,67.0,B,70.9,Good,Needs Support,79.6,-8.7,Increase study hours
+ST0078,Shreya Pandey,Female,Computer Science,3,80.0,2.2,85.1,83.0,77.0,74.0,70.0,80.0,89.0,,71.0,B+,70.9,Good,Needs Support,78.5,-7.6,Performance is stable
+ST0331,Vivek Yadav,Male,Data Science,3,81.9,2.7,72.7,100.0,67.0,91.0,67.0,85.0,72.0,Occasional,62.0,B,71.0,Good,Needs Support,79.6,-8.6,Performance is stable
+ST0128,Karan Pandey,Female,Information Technology,2,74.1,2.3,79.9,93.0,54.0,89.0,75.0,90.0,83.0,Occasional,72.0,B+,71.2,Good,Needs Support,78.8,-7.6,Focus on quizzes
+ST0287,Rahul Pandey,Female,Computer Science,3,83.7,3.2,72.0,87.0,60.0,88.0,58.0,87.0,72.0,Occasional,69.0,B,71.3,Good,Needs Support,78.5,-7.2,Performance is stable
+ST0013,Aditi Gupta,Female,Data Science,3,83.9,2.5,73.2,95.0,66.0,71.0,66.0,88.0,80.0,Active,71.0,B+,71.4,Good,Needs Support,79.6,-8.2,Performance is stable
+ST0436,Aditi Kumar,Male,Data Science,2,59.2,3.7,75.1,97.0,68.0,100.0,69.0,91.0,66.0,Occasional,66.0,B,71.5,Good,Needs Support,79.6,-8.1,Improve attendance
+ST0246,Karan Pandey,Male,Artificial Intelligence,6,89.6,1.6,71.0,82.0,67.0,89.0,67.0,82.0,71.0,Active,71.0,B+,71.5,Good,Needs Support,78.9,-7.4,Increase study hours
+ST0008,Aditya Singh,Female,Artificial Intelligence,2,67.6,3.6,58.7,83.0,73.0,88.0,70.0,88.0,89.0,,69.0,B,71.7,Good,Needs Support,78.9,-7.2,Improve attendance
+ST0181,Ishaan Gupta,Male,Information Technology,2,82.1,1.8,72.3,86.0,69.0,69.0,75.0,77.0,88.0,Occasional,76.0,B+,71.8,Good,Needs Support,78.8,-7.0,Increase study hours
+ST0044,Arjun Kumar,Male,Computer Science,5,74.9,4.5,62.4,85.0,67.0,85.0,60.0,93.0,82.0,Active,67.0,B,71.9,Good,Needs Support,78.5,-6.6,Submit assignments regularly
+ST0322,Arjun Kumar,Male,Information Technology,3,82.6,2.7,69.7,100.0,63.0,84.0,77.0,91.0,71.0,,65.0,B,72.0,Good,Needs Support,78.8,-6.8,Submit assignments regularly
+ST0276,Aditi Pandey,Male,Artificial Intelligence,5,62.5,5.0,76.7,88.0,82.0,79.0,70.0,88.0,92.0,Occasional,64.0,B,72.0,Good,Needs Support,78.9,-6.9,Improve attendance
+ST0039,Rahul Kumar,Female,Data Science,2,71.6,3.0,74.6,99.0,67.0,83.0,70.0,84.0,76.0,Active,70.0,B+,72.1,Good,Needs Support,79.6,-7.5,Performance is stable
+ST0139,Aarav Gupta,Female,Artificial Intelligence,2,82.9,1.9,80.2,91.0,52.0,76.0,76.0,88.0,80.0,Active,77.0,B+,72.1,Good,Needs Support,78.9,-6.8,Increase study hours
+ST0391,Kavya Pandey,Male,Computer Science,6,77.8,2.4,79.8,96.0,70.0,74.0,72.0,83.0,85.0,Active,72.0,B+,72.1,Good,Needs Support,78.5,-6.4,Performance is stable
+ST0339,Rahul Verma,Male,Computer Science,6,73.4,1.5,63.7,94.0,74.0,73.0,73.0,84.0,73.0,,78.0,B+,72.2,Good,Needs Support,78.5,-6.3,Increase study hours
+ST0137,Neha Gupta,Female,Data Science,2,68.6,2.7,86.7,89.0,75.0,80.0,75.0,87.0,69.0,Occasional,73.0,B+,72.2,Good,Needs Support,79.6,-7.4,Improve attendance
+ST0247,Yash Mishra,Female,Artificial Intelligence,2,73.0,3.8,71.8,81.0,71.0,88.0,68.0,93.0,100.0,,69.0,B,72.2,Good,Needs Support,78.9,-6.7,Performance is stable
+ST0324,Kavya Verma,Male,Data Science,3,74.9,3.4,80.8,96.0,69.0,85.0,65.0,92.0,81.0,Occasional,68.0,B,72.2,Good,Needs Support,79.6,-7.4,Performance is stable
+ST0428,Aditi Mishra,Male,Information Technology,4,76.5,3.1,71.5,91.0,70.0,84.0,62.0,84.0,100.0,Active,71.0,B+,72.2,Good,Needs Support,78.8,-6.6,Performance is stable
+ST0396,Arjun Sharma,Male,Computer Science,3,75.4,2.5,78.6,96.0,70.0,91.0,65.0,81.0,76.0,Active,70.0,B+,72.2,Good,Needs Support,78.5,-6.3,Performance is stable
+ST0149,Aarav Agarwal,Male,Data Science,4,69.8,3.6,89.1,96.0,71.0,89.0,72.0,88.0,62.0,Occasional,66.0,B,72.4,Good,Needs Support,79.6,-7.2,Improve attendance
+ST0038,Shreya Srivastava,Male,Information Technology,2,71.8,3.1,62.6,83.0,70.0,85.0,75.0,79.0,89.0,Occasional,72.0,B+,72.4,Good,Needs Support,78.8,-6.4,Submit assignments regularly
+ST0448,Karan Verma,Female,Artificial Intelligence,2,75.4,3.6,71.3,86.0,65.0,90.0,69.0,66.0,89.0,,69.0,B,72.5,Good,Needs Support,78.9,-6.4,Performance is stable
+ST0273,Ishaan Verma,Male,Data Science,3,80.5,1.8,78.7,90.0,65.0,83.0,70.0,80.0,71.0,Occasional,76.0,B+,72.5,Good,Needs Support,79.6,-7.1,Increase study hours
+ST0244,Priya Mishra,Male,Data Science,3,93.3,3.1,83.5,100.0,64.0,87.0,71.0,84.0,80.0,Occasional,61.0,B,72.7,Good,Needs Support,79.6,-6.9,Performance is stable
+ST0145,Aarav Verma,Male,Data Science,4,76.2,3.9,73.5,88.0,79.0,81.0,65.0,95.0,83.0,Occasional,67.0,B,72.7,Good,Needs Support,79.6,-6.9,Performance is stable
+ST0204,Neha Sharma,Female,Artificial Intelligence,3,77.2,2.7,58.9,88.0,74.0,86.0,78.0,74.0,75.0,Active,69.0,B,72.8,Good,Needs Support,78.9,-6.1,Submit assignments regularly
+ST0299,Rohan Mishra,Male,Computer Science,5,73.0,2.7,73.4,100.0,61.0,90.0,64.0,71.0,97.0,Active,74.0,B+,72.8,Good,Needs Support,78.5,-5.7,Performance is stable
+ST0325,Shreya Gupta,Female,Artificial Intelligence,4,74.7,3.4,72.5,77.0,75.0,79.0,64.0,90.0,96.0,Active,76.0,B+,73.0,Good,Needs Support,78.9,-5.9,Performance is stable
+ST0437,Satyam Verma,Male,Artificial Intelligence,6,72.4,3.0,54.7,85.0,75.0,87.0,72.0,91.0,84.0,Occasional,72.0,B+,73.0,Good,Needs Support,78.9,-5.9,Submit assignments regularly
+ST0323,Kavya Yadav,Female,Computer Science,5,74.1,2.9,76.5,90.0,74.0,81.0,75.0,87.0,74.0,,72.0,B+,73.1,Good,Needs Support,78.5,-5.4,Performance is stable
+ST0216,Neha Agarwal,Male,Computer Science,3,74.8,3.0,66.6,96.0,65.0,95.0,64.0,83.0,97.0,Occasional,71.0,B+,73.1,Good,Needs Support,78.5,-5.4,Submit assignments regularly
+ST0140,Ishaan Srivastava,Female,Artificial Intelligence,3,79.8,3.3,77.6,95.0,69.0,79.0,63.0,78.0,73.0,Active,72.0,B+,73.3,Good,Needs Support,78.9,-5.6,Performance is stable
+ST0259,Shreya Mishra,Female,Computer Science,6,83.7,1.7,82.9,95.0,67.0,82.0,76.0,77.0,94.0,Occasional,74.0,B+,73.3,Good,Needs Support,78.5,-5.2,Increase study hours
+ST0021,Arjun Srivastava,Male,Computer Science,5,80.3,2.5,75.6,90.0,76.0,82.0,71.0,89.0,67.0,,72.0,B+,73.3,Good,Needs Support,78.5,-5.2,Performance is stable
+ST0155,Vivek Kumar,Male,Artificial Intelligence,4,77.7,2.9,86.9,94.0,70.0,87.0,72.0,82.0,90.0,Active,70.0,B+,73.3,Good,Needs Support,78.9,-5.6,Performance is stable
+ST0045,Neha Kumar,Female,Information Technology,5,74.9,2.5,76.6,100.0,62.0,83.0,77.0,78.0,87.0,Occasional,74.0,B+,73.5,Good,Needs Support,78.8,-5.3,Performance is stable
+ST0152,Kavya Gupta,Male,Artificial Intelligence,3,81.7,2.3,69.5,94.0,60.0,83.0,78.0,88.0,79.0,Occasional,74.0,B+,73.5,Good,Needs Support,78.9,-5.4,Submit assignments regularly
+ST0072,Diya Gupta,Male,Computer Science,3,84.3,1.6,64.0,96.0,66.0,85.0,73.0,80.0,82.0,Occasional,75.0,B+,73.6,Good,Needs Support,78.5,-4.9,Increase study hours
+ST0224,Vivek Verma,Male,Information Technology,2,76.8,3.7,65.9,79.0,66.0,93.0,63.0,92.0,79.0,,74.0,B+,73.7,Good,Needs Support,78.8,-5.1,Submit assignments regularly
+ST0005,Vivek Singh,Male,Computer Science,5,78.8,2.7,64.3,100.0,64.0,74.0,80.0,95.0,74.0,Active,73.0,B+,73.7,Good,Needs Support,78.5,-4.8,Submit assignments regularly
+ST0032,Nisha Kumar,Male,Data Science,5,74.8,4.1,72.6,91.0,72.0,93.0,60.0,79.0,79.0,Occasional,69.0,B,73.8,Good,Needs Support,79.6,-5.8,Performance is stable
+ST0080,Vivek Pandey,Male,Computer Science,4,66.8,3.6,78.8,99.0,75.0,76.0,70.0,72.0,79.0,Active,74.0,B+,73.9,Good,Needs Support,78.5,-4.6,Improve attendance
+ST0088,Nisha Agarwal,Female,Data Science,3,69.4,3.8,77.2,92.0,74.0,82.0,76.0,90.0,78.0,,71.0,B+,74.0,Good,Needs Support,79.6,-5.6,Improve attendance
+ST0073,Diya Kumar,Male,Computer Science,6,87.8,1.9,100.0,100.0,75.0,80.0,73.0,84.0,78.0,Active,71.0,B+,74.0,Good,Needs Support,78.5,-4.5,Increase study hours
+ST0046,Aditya Gupta,Male,Data Science,2,81.9,2.5,71.7,97.0,66.0,84.0,70.0,92.0,81.0,Occasional,74.0,B+,74.1,Good,Needs Support,79.6,-5.5,Performance is stable
+ST0036,Ishaan Yadav,Male,Information Technology,4,72.3,2.4,71.3,87.0,61.0,87.0,79.0,78.0,72.0,Occasional,80.0,A,74.2,Good,Needs Support,78.8,-4.6,Performance is stable
+ST0048,Ananya Singh,Male,Computer Science,2,78.9,3.1,69.0,87.0,75.0,83.0,69.0,78.0,84.0,Occasional,74.0,B+,74.3,Good,Needs Support,78.5,-4.2,Submit assignments regularly
+ST0311,Neha Singh,Male,Artificial Intelligence,2,82.6,1.7,82.9,100.0,71.0,83.0,71.0,83.0,79.0,,76.0,B+,74.3,Good,Needs Support,78.9,-4.6,Increase study hours
+ST0427,Yash Sharma,Female,Artificial Intelligence,3,70.4,3.2,76.8,100.0,65.0,94.0,73.0,86.0,72.0,Occasional,73.0,B+,74.6,Good,Needs Support,78.9,-4.3,Performance is stable
+ST0171,Arjun Pandey,Male,Information Technology,5,78.5,2.9,84.2,100.0,63.0,89.0,76.0,79.0,83.0,,72.0,B+,74.6,Good,Needs Support,78.8,-4.2,Performance is stable
+ST0232,Priya Gupta,Male,Artificial Intelligence,5,73.9,4.6,64.3,98.0,60.0,86.0,63.0,95.0,72.0,Active,73.0,B+,75.0,Good,Needs Support,78.9,-3.9,Submit assignments regularly
+ST0422,Rohan Verma,Male,Computer Science,4,71.8,4.1,77.7,92.0,79.0,89.0,65.0,93.0,84.0,Active,72.0,B+,75.3,Good,Needs Support,78.5,-3.2,Performance is stable
+ST0108,Aditya Pandey,Female,Artificial Intelligence,5,79.0,3.8,81.2,95.0,69.0,96.0,72.0,88.0,85.0,Active,69.0,B,75.5,Good,Needs Support,78.9,-3.4,Performance is stable
+ST0464,Vivek Mishra,Male,Information Technology,5,83.5,3.8,81.7,97.0,69.0,89.0,74.0,78.0,98.0,Occasional,68.0,B,75.6,Good,Needs Support,78.8,-3.2,Performance is stable
+ST0089,Aditi Yadav,Male,Information Technology,6,83.9,1.6,86.0,93.0,67.0,82.0,67.0,86.0,73.0,Occasional,84.0,A,75.6,Good,Needs Support,78.8,-3.2,Increase study hours
+ST0415,Neha Pandey,Male,Artificial Intelligence,2,74.0,3.9,81.9,96.0,73.0,84.0,75.0,93.0,95.0,Occasional,72.0,B+,75.6,Good,Needs Support,78.9,-3.3,Performance is stable
+ST0116,Yash Singh,Male,Information Technology,2,93.5,1.0,71.1,96.0,76.0,69.0,79.0,95.0,67.0,Occasional,80.0,A,75.7,Good,Needs Support,78.8,-3.1,Increase study hours
+ST0374,Aarav Singh,Male,Computer Science,6,76.4,3.6,60.1,89.0,73.0,94.0,72.0,79.0,77.0,Occasional,73.0,B+,75.8,Good,Needs Support,78.5,-2.7,Submit assignments regularly
+ST0175,Rahul Sharma,Male,Data Science,2,92.2,1.0,91.3,99.0,60.0,88.0,73.0,81.0,79.0,Active,81.0,A,75.8,Good,Needs Support,79.6,-3.8,Increase study hours
+ST0019,Priya Kumar,Male,Data Science,4,76.6,3.4,89.5,100.0,67.0,84.0,77.0,82.0,75.0,,74.0,B+,75.9,Good,Needs Support,79.6,-3.7,Performance is stable
+ST0379,Ishaan Yadav,Male,Information Technology,5,75.9,3.9,56.6,96.0,64.0,92.0,76.0,86.0,75.0,,73.0,B+,76.2,Good,Needs Support,78.8,-2.6,Submit assignments regularly
+ST0348,Rohan Srivastava,Female,Artificial Intelligence,5,72.6,3.4,79.0,96.0,73.0,90.0,78.0,77.0,84.0,Occasional,74.0,B+,76.2,Good,Needs Support,78.9,-2.7,Performance is stable
+ST0133,Nisha Agarwal,Female,Computer Science,6,81.3,3.0,84.2,97.0,85.0,85.0,71.0,76.0,87.0,Occasional,73.0,B+,76.5,Good,Needs Support,78.5,-2.0,Performance is stable
+ST0211,Priya Yadav,Male,Data Science,3,77.2,3.4,70.8,100.0,73.0,92.0,69.0,95.0,85.0,Occasional,74.0,B+,76.5,Good,Needs Support,79.6,-3.1,Performance is stable
+ST0411,Karan Pandey,Female,Information Technology,3,73.5,3.9,71.0,99.0,67.0,85.0,81.0,79.0,94.0,,74.0,B+,76.6,Good,Needs Support,78.8,-2.2,Performance is stable
+ST0453,Ananya Singh,Female,Information Technology,5,67.3,4.9,67.9,99.0,69.0,97.0,72.0,89.0,100.0,Active,71.0,B+,76.8,Good,Needs Support,78.8,-2.0,Improve attendance
+ST0316,Diya Gupta,Male,Artificial Intelligence,5,74.6,3.9,61.9,94.0,74.0,89.0,73.0,95.0,80.0,Occasional,75.0,B+,76.9,Good,Needs Support,78.9,-2.0,Submit assignments regularly
+ST0303,Shreya Kumar,Male,Computer Science,3,76.7,2.9,75.4,100.0,84.0,93.0,79.0,84.0,83.0,Occasional,72.0,B+,77.1,Good,Needs Support,78.5,-1.4,Performance is stable
+ST0060,Karan Pandey,Female,Artificial Intelligence,4,94.9,1.8,83.8,100.0,71.0,73.0,85.0,92.0,81.0,Active,78.0,B+,77.4,Good,Needs Support,78.9,-1.5,Increase study hours
+ST0344,Aarav Kumar,Female,Data Science,3,82.9,3.7,84.3,100.0,76.0,86.0,77.0,89.0,85.0,,72.0,B+,77.7,Good,Needs Support,79.6,-1.9,Performance is stable
+ST0435,Shreya Yadav,Female,Artificial Intelligence,4,74.0,4.9,67.0,100.0,74.0,91.0,68.0,94.0,89.0,Active,72.0,B+,77.8,Good,Needs Support,78.9,-1.1,Submit assignments regularly
+ST0412,Rohan Sharma,Male,Computer Science,6,74.6,3.7,71.2,85.0,81.0,94.0,71.0,74.0,88.0,Active,79.0,B+,78.1,Good,Needs Support,78.5,-0.4,Performance is stable
+ST0381,Rahul Agarwal,Male,Artificial Intelligence,2,80.6,3.8,67.8,92.0,77.0,100.0,75.0,79.0,84.0,Occasional,73.0,B+,78.4,Good,Needs Support,78.9,-0.5,Submit assignments regularly
+ST0451,Aarav Kumar,Male,Data Science,2,73.4,3.4,56.4,81.0,85.0,96.0,76.0,82.0,70.0,,81.0,A,78.8,Good,Needs Support,79.6,-0.8,Submit assignments regularly
+ST0364,Aarav Sharma,Male,Information Technology,4,81.9,3.8,69.4,94.0,86.0,84.0,81.0,95.0,94.0,Occasional,74.0,B+,79.0,Good,Needs Support,78.8,0.2,Submit assignments regularly
+ST0279,Rahul Pandey,Male,Computer Science,3,72.8,4.6,79.1,96.0,82.0,99.0,76.0,95.0,84.0,Active,73.0,B+,79.4,Good,Needs Support,78.5,0.9,Performance is stable
+ST0129,Aarav Mishra,Male,Information Technology,2,74.3,3.9,73.4,98.0,73.0,85.0,71.0,90.0,92.0,,85.0,A,80.1,Good,Needs Support,78.8,1.3,Performance is stable
+ST0125,Yash Sharma,Female,Data Science,3,72.8,3.8,61.4,93.0,78.0,92.0,82.0,88.0,100.0,Active,84.0,A,81.2,Good,Needs Support,79.6,1.6,Submit assignments regularly
+ST0475,Satyam Agarwal,Male,Computer Science,3,93.8,1.6,82.6,100.0,68.0,97.0,75.0,80.0,71.0,Active,89.0,A,81.9,Good,Needs Support,78.5,3.4,Increase study hours

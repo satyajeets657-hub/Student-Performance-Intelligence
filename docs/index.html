@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Performance Intelligence System - Live Web Application</title>
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --accent: #0284c7;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* Header */
+  header {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, #1e3a8a, #0284c7);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .brand-text h1 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .brand-text p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-outline { background: white; border-color: var(--border); color: var(--text); }
+  .btn-outline:hover { background: var(--bg); border-color: #cbd5e1; }
+
+  /* Nav Tabs */
+  .nav-tabs {
+    max-width: 1200px;
+    margin: 15px auto 0;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+
+  /* Main Container */
+  main {
+    max-width: 1200px;
+    margin: 20px auto 40px;
+    padding: 0 20px;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .kpi-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 6px 0 2px;
+  }
+  .kpi-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Card Container */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  /* AI Assistant Box */
+  .ai-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .ai-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .chip {
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chip:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .ai-input-group {
+    display: flex;
+    gap: 8px;
+  }
+  .ai-input {
+    flex: 1;
+    padding: 9px 14px;
+    font-size: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+  }
+  .ai-input:focus {
+    border-color: var(--primary);
+  }
+  .ai-response {
+    margin-top: 12px;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Filters */
+  .filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .filter-input, .filter-select {
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    outline: none;
+  }
+  .filter-input { flex: 1; min-width: 200px; }
+
+  /* Table */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+  }
+  th, td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  tr:hover td {
+    background: #f1f5f9;
+    cursor: pointer;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 12px;
+  }
+  .badge-excellent { background: #dcfce7; color: #15803d; }
+  .badge-good      { background: #e0f2fe; color: #0369a1; }
+  .badge-stable    { background: #fef3c7; color: #b45309; }
+  .badge-attention { background: #fee2e2; color: #b91c1c; }
+  .badge-risk      { background: #fecdd3; color: #9f1239; }
+
+  /* Student Portal Styles */
+  .student-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .slider-group {
+    margin-bottom: 16px;
+  }
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--primary);
+  }
+  .sim-result-box {
+    background: var(--primary-light);
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal {
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 10px;
+    padding: 24px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    background: white;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">SP</div>
+      <div class="brand-text">
+        <h1>Student Performance Intelligence System</h1>
+        <p>Presented by: Satyajeet Singh &bull; Department of Data Science</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <a href="PROJECT_REPORT_PRINTABLE.html" target="_blank" class="btn btn-primary">🖨️ Open & Print Report (Ctrl+P)</a>
+      <a href="https://github.com" id="repoLink" target="_blank" class="btn btn-outline">📂 GitHub Repository</a>
+    </div>
+  </div>
+</header>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="switchTab('teacher')">👨‍🏫 Teacher Cockpit & AI Assistant</button>
+  <button class="tab-btn" onclick="switchTab('student')">👨‍🎓 Student Portal & What-If Simulator</button>
+  <button class="tab-btn" onclick="switchTab('report')">📑 Master Academic Report & Formulas</button>
+  <button class="tab-btn" onclick="switchTab('cloud')">☁️ Cloud Deployment & Live Links</button>
+</div>
+
+<main>
+
+  <!-- TAB 1: TEACHER COCKPIT -->
+  <div id="tab-teacher" class="tab-content active">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Enrollment</div>
+        <div class="kpi-value" id="kpiTotal">500</div>
+        <div class="kpi-sub">Students across 4 Departments</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Average Performance</div>
+        <div class="kpi-value" id="kpiAvgPerf">79.0</div>
+        <div class="kpi-sub">Out of 100.0 Composite Score</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Average Attendance</div>
+        <div class="kpi-value" id="kpiAvgAtt">84.1%</div>
+        <div class="kpi-sub">Cohort classroom telemetry</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Urgent Support Flags</div>
+        <div class="kpi-value" id="kpiRisk" style="color: var(--danger);">147</div>
+        <div class="kpi-sub">High & Medium Risk Tiers</div>
+      </div>
+    </div>
+
+    <!-- AI Assistant Query Box -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🤖 Local Teacher AI Query Assistant</div>
+        <span class="badge badge-good">100% Explainable &bull; Zero External API</span>
+      </div>
+      <div class="ai-box">
+        <div class="ai-chips">
+          <span class="chip" onclick="askAi('class summary')">📊 Class summary</span>
+          <span class="chip" onclick="askAi('high risk students')">⚠️ High-risk students</span>
+          <span class="chip" onclick="askAi('who are the top students')">🏆 Top students</span>
+          <span class="chip" onclick="askAi('low attendance')">📉 Low attendance (&lt;70%)</span>
+          <span class="chip" onclick="askAi('department average')">🏢 Department averages</span>
+          <span class="chip" onclick="askAi('summarize ST0001')">🔍 Student ST0001</span>
+          <span class="chip" onclick="askAi('intervention plan')">📋 Action plan</span>
+        </div>
+        <div class="ai-input-group">
+          <input type="text" id="aiQueryInput" class="ai-input" placeholder="Type a question, e.g. 'top students', 'high risk', 'ST0002', 'department average'...">
+          <button class="btn btn-primary" onclick="handleAiSubmit()">Ask Assistant</button>
+        </div>
+        <div class="ai-response" id="aiResponseBox">
+          Hello! I can analyse the current cohort data. Click any of the query chips above or type a student ID like <strong>ST0001</strong> to see instant explainable insights.
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Roster Table -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📋 Student Performance Roster (500 Cohort Records)</div>
+        <div style="font-size: 12px; color: var(--text-muted);">Click any row to inspect deep-dive diagnostics</div>
+      </div>
+      <div class="filter-bar">
+        <input type="text" id="searchInput" class="filter-input" placeholder="Search by name or Student ID (e.g. ST0001)..." oninput="applyFilters()">
+        <select id="deptFilter" class="filter-select" onchange="applyFilters()">
+          <option value="ALL">All Departments</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Data Science">Data Science</option>
+          <option value="Artificial Intelligence">Artificial Intelligence</option>
+          <option value="Information Technology">Information Technology</option>
+        </select>
+        <select id="statusFilter" class="filter-select" onchange="applyFilters()">
+          <option value="ALL">All Statuses</option>
+          <option value="Excellent">Excellent (&ge;85)</option>
+          <option value="Good">Good (70-84.9)</option>
+          <option value="Stable">Stable (55-69.9)</option>
+          <option value="Attention">Attention (40-54.9)</option>
+          <option value="High Risk">High Risk (&lt;40)</option>
+        </select>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Attendance</th>
+              <th>Final Marks</th>
+              <th>Performance Score</th>
+              <th>Status</th>
+              <th>Risk Level</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <!-- Populated dynamically via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: STUDENT PORTAL -->
+  <div id="tab-student" class="tab-content">
+    <div class="student-header">
+      <div>
+        <h2 style="font-size: 20px; color: var(--primary);">Student Self-Service Portal</h2>
+        <p style="color: var(--text-muted); font-size: 13px;">Review your academic diagnostics and test proactive habit simulations.</p>
+      </div>
+      <div>
+        <label style="font-size: 13px; font-weight: 600; margin-right: 8px;">Switch Student:</label>
+        <select id="studentSelector" class="filter-select" onchange="loadStudentPortal(this.value)">
+          <option value="ST0001">ST0001 - Aditya Pandey (Computer Science)</option>
+          <option value="ST0002">ST0002 - Vivek Gupta (Data Science)</option>
+          <option value="ST0003">ST0003 - Nisha Mishra (Artificial Intelligence)</option>
+          <option value="ST0004">ST0004 - Shreya Verma (Computer Science)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Performance Score</div>
+        <div class="kpi-value" id="stScore">88.5</div>
+        <div class="kpi-sub" id="stStatusBadge"><span class="badge badge-excellent">Excellent</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Class Attendance</div>
+        <div class="kpi-value" id="stAttendance">100.0%</div>
+        <div class="kpi-sub">Formative engagement telemetry</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Department Average</div>
+        <div class="kpi-value" id="stDeptAvg">80.2</div>
+        <div class="kpi-sub" id="stGap">Gap: +8.3 above peers</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Support Flag</div>
+        <div class="kpi-value" id="stSupport" style="color: var(--success); font-size: 22px;">Normal</div>
+        <div class="kpi-sub">Risk Score: 0 / 10</div>
+      </div>
+    </div>
+
+    <!-- WHAT-IF SIMULATOR -->
+    <div class="card" style="border: 2px solid #bfdbfe;">
+      <div class="card-header">
+        <div class="card-title">🔮 Interactive What-If Scenario Simulator</div>
+        <span class="badge badge-good">Proactive Academic Modeling</span>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+        Adjust the sliders below to simulate how changing your attendance habits or increasing daily study hours will directly elevate your overall Performance Score:
+      </p>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span>Simulated Attendance Rate:</span>
+          <span id="sliderAttVal" style="color: var(--primary);">100%</span>
+        </div>
+        <input type="range" id="simAttendance" min="0" max="100" step="1" value="100" oninput="runWhatIf()">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-header">
+          <span>Daily Self-Study Hours:</span>
+          <span id="sliderStudyVal" style="color: var(--primary);">2.5 hrs/day</span>
+        </div>
+        <input type="range" id="simStudy" min="0" max="10" step="0.5" value="2.5" oninput="runWhatIf()">
+      </div>
+
+      <div class="sim-result-box">
+        <div style="font-size: 13px; color: var(--text-muted);">Simulated Performance Score:</div>
+        <div style="font-size: 32px; font-weight: 800; color: var(--primary);" id="simScoreDisplay">88.5</div>
+        <div style="font-size: 14px; font-weight: 600;" id="simChangeDisplay">Score Change: 0.0 pts &bull; Projected Status: Excellent</div>
+      </div>
+    </div>
+
+    <!-- Diagnostics Breakdown -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px; color: var(--success);">🌟 Academic Strengths (&ge; 80%)</div>
+        <ul id="stStrengths" style="margin-left: 20px; font-size: 13px;">
+          <!-- Populated via JS -->
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title" style="margin-bottom: 12px; color: var(--warning);">⚠️ Areas for Improvement (&lt; 65%)</div>
+        <ul id="stWeaknesses" style="margin-left: 20px; font-size: 13px;">
+          <!-- Populated via JS -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 10px;">💡 Prescribed Actionable Recommendations</div>
+      <ul id="stRecommendations" style="margin-left: 20px; font-size: 13px; line-height: 1.8;">
+        <!-- Populated via JS -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- TAB 3: REPORT & PRINT -->
+  <div id="tab-report" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📑 Academic Documentation & Printable Report</div>
+        <a href="PROJECT_REPORT_PRINTABLE.html" target="_blank" class="btn btn-primary">🖨️ Launch Printable View (Ctrl + P)</a>
+      </div>
+      <p style="font-size: 14px; margin-bottom: 16px;">
+        A complete, 10-15 page formal academic documentation is prepared and saved right in this repository. It is optimized with print CSS stylesheets, page breaks, and official institution headings so you can print it out directly on paper or save as PDF.
+      </p>
+
+      <div style="background: #f1f5f9; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="color: var(--primary); font-size: 15px; margin-bottom: 8px;">Key Formulations in the Report:</h3>
+        <p style="font-family: monospace; font-size: 13px; color: #1e3a8a;">
+          <strong>Performance Score =</strong> (Final_Marks &times; 0.35) + (Attendance &times; 0.15) + (Study_Score &times; 0.10) + (Assignment_Score &times; 0.10) + (Quiz_Average &times; 0.10) + (Practical_Score &times; 0.10) + (Internal_Marks &times; 0.10)<br><br>
+          <strong>Performance Gap =</strong> Individual Performance Score &minus; Department Average Score
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 12px;">
+        <a href="PROJECT_REPORT_PRINTABLE.html" target="_blank" class="btn btn-primary">📄 Open Full Printable Report</a>
+        <a href="PROJECT_REPORT.md" target="_blank" class="btn btn-outline">📖 View Markdown Documentation</a>
+        <a href="WORK_LOG.md" target="_blank" class="btn btn-outline">🛠️ View Work Log & Milestones</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: CLOUD DEPLOYMENT -->
+  <div id="tab-cloud" class="tab-content">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">☁️ Live Link & Cloud Deployment Information</div>
+        <span class="badge badge-good">Production Ready</span>
+      </div>
+      <p style="font-size: 14px; margin-bottom: 16px;">
+        This repository has two live deployment methods configured:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="border: 1px solid var(--border); padding: 18px; border-radius: 8px; background: white;">
+          <h4 style="color: var(--primary); margin-bottom: 8px;">1. GitHub Pages (Active Now)</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+            The static client-side web application runs directly on GitHub Pages with 100% free hosting and instant loading.
+          </p>
+          <code style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 12px; display: block; margin-bottom: 12px;">
+            https://&lt;your-username&gt;.github.io/&lt;repo-name&gt;/
+          </code>
+        </div>
+
+        <div style="border: 1px solid var(--border); padding: 18px; border-radius: 8px; background: white;">
+          <h4 style="color: var(--primary); margin-bottom: 8px;">2. Render.com Flask Backend (1-Click)</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+            Connect your GitHub repository to Render to run the full Python Flask + SQLite backend with Gunicorn WSGI.
+          </p>
+          <code style="background: #f1f5f9; padding: 4px 8px; border-radius: 4px; font-size: 12px; display: block; margin-bottom: 12px;">
+            https://student-performance-intelligence.onrender.com
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL FOR STUDENT DETAIL -->
+<div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 style="color: var(--primary);" id="modalName">Student Diagnostic Profile</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modalContent" style="font-size: 13px; line-height: 1.6;">
+      <!-- Populated via JS -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>Student Performance Intelligence System</strong> &bull; Presented by Satyajeet Singh &bull; Department of Data Science
+</footer>
+
+<script>
+  let studentsData = [];
+  let currentStudent = null;
+
+  // Load students data
+  fetch('students_data.json')
+    .then(res => res.json())
+    .then(data => {
+      studentsData = data;
+      renderTable(studentsData);
+      loadStudentPortal('ST0001');
+    })
+    .catch(err => {
+      console.warn("Could not load external JSON, loading fallback sample", err);
+    });
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  function renderTable(list) {
+    const tbody = document.getElementById('studentTableBody');
+    tbody.innerHTML = '';
+    const slice = list.slice(0, 50); // render top 50 for speed
+    slice.forEach(s => {
+      const tr = document.createElement('tr');
+      tr.onclick = () => showStudentModal(s);
+      let badgeClass = 'badge-good';
+      if (s.Performance_Status === 'Excellent') badgeClass = 'badge-excellent';
+      if (s.Performance_Status === 'Stable') badgeClass = 'badge-stable';
+      if (s.Performance_Status === 'Attention') badgeClass = 'badge-attention';
+      if (s.Performance_Status === 'High Risk') badgeClass = 'badge-risk';
+
+      tr.innerHTML = `
+        <td><strong>${s.Student_ID}</strong></td>
+        <td>${s.Name}</td>
+        <td>${s.Department}</td>
+        <td>${s.Attendance.toFixed(1)}%</td>
+        <td>${s.Final_Marks.toFixed(1)}</td>
+        <td><strong>${s.Performance_Score.toFixed(1)}</strong></td>
+        <td><span class="badge ${badgeClass}">${s.Performance_Status}</span></td>
+        <td><span class="badge ${s.Risk_Level === 'High' ? 'badge-risk' : (s.Risk_Level === 'Medium' ? 'badge-attention' : 'badge-excellent')}">${s.Risk_Level}</span></td>
+        <td><button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;">View</button></td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    const dept = document.getElementById('deptFilter').value;
+    const stat = document.getElementById('statusFilter').value;
+
+    const filtered = studentsData.filter(s => {
+      const matchQ = !q || s.Name.toLowerCase().includes(q) || s.Student_ID.toLowerCase().includes(q);
+      const matchDept = (dept === 'ALL') || (s.Department === dept);
+      const matchStat = (stat === 'ALL') || (s.Performance_Status === stat);
+      return matchQ && matchDept && matchStat;
+    });
+    renderTable(filtered);
+  }
+
+  function askAi(query) {
+    document.getElementById('aiQueryInput').value = query;
+    handleAiSubmit();
+  }
+
+  function handleAiSubmit() {
+    const q = (document.getElementById('aiQueryInput').value || '').toLowerCase().trim();
+    const box = document.getElementById('aiResponseBox');
+    if (!q) return;
+
+    if (q.includes('summary') || q.includes('class') || q.includes('overall')) {
+      box.innerHTML = `<strong>Class Summary:</strong> 500 students enrolled across 4 departments. Class average performance is <strong>79.0/100</strong>, average attendance is <strong>84.1%</strong>, and daily study average is <strong>3.5 hrs</strong>. Status breakdown: 102 Excellent, 342 Good, 56 Stable. 147 students are flagged by multi-factor risk rules.`;
+      return;
+    }
+    if (q.includes('top student') || q.includes('highest') || q.includes('best')) {
+      const top = [...studentsData].sort((a,b) => b.Performance_Score - a.Performance_Score).slice(0, 5);
+      const names = top.map(t => `${t.Name} (${t.Student_ID}: ${t.Performance_Score.toFixed(1)})`).join(', ');
+      box.innerHTML = `<strong>Top Performing Students:</strong> ${names}.`;
+      return;
+    }
+    if (q.includes('high risk') || q.includes('at risk') || q.includes('risk')) {
+      const high = studentsData.filter(s => s.Risk_Level === 'High').slice(0, 6);
+      const names = high.map(h => `${h.Name} (${h.Student_ID}, Attendance: ${h.Attendance.toFixed(1)}%, Marks: ${h.Final_Marks})`).join('; ');
+      box.innerHTML = `<strong>High-Risk Student Alert:</strong> ${names}. These students require immediate remedial attention and attendance monitoring.`;
+      return;
+    }
+    if (q.includes('attendance') || q.includes('low attendance')) {
+      const low = studentsData.filter(s => s.Attendance < 70).slice(0, 6);
+      const names = low.map(l => `${l.Name} (${l.Student_ID}, ${l.Attendance.toFixed(1)}%)`).join(', ');
+      box.innerHTML = `<strong>Low Attendance Alert (&lt;70%):</strong> Found ${studentsData.filter(s => s.Attendance < 70).length} students. Lowest include: ${names}.`;
+      return;
+    }
+    if (q.includes('department') || q.includes('branch')) {
+      box.innerHTML = `<strong>Average Performance by Department:</strong> Artificial Intelligence: 79.4 | Computer Science: 78.8 | Data Science: 79.1 | Information Technology: 78.7.`;
+      return;
+    }
+    if (q.includes('action') || q.includes('plan') || q.includes('intervention')) {
+      box.innerHTML = `<strong>Intervention Plan:</strong> 1) Group students by primary weak area, 2) Set minimum 75% attendance alerts, 3) Schedule lab practice for students with Practical &lt;65%, 4) Monitor progress on next quiz.`;
+      return;
+    }
+
+    // Match student ID like ST0001
+    const match = q.match(/st\s*\d{4}/i);
+    if (match) {
+      const sid = match[0].replace(/\s+/, '').toUpperCase();
+      const s = studentsData.find(st => st.Student_ID.toUpperCase() === sid);
+      if (s) {
+        box.innerHTML = `<strong>Student Profile: ${s.Name} (${s.Student_ID}):</strong> Performance ${s.Performance_Score.toFixed(1)}/100 (${s.Performance_Status}), Attendance ${s.Attendance.toFixed(1)}%, Risk Level: ${s.Risk_Level}. Primary insight: <em>${s.Primary_Insight}</em>. Strengths: ${s.Strengths.join(', ') || 'None'}.`;
+        return;
+      }
+    }
+
+    box.innerHTML = `I can answer queries like <em>class summary</em>, <em>top students</em>, <em>high risk</em>, <em>low attendance</em>, <em>department averages</em>, or any student ID like <em>ST0001</em>.`;
+  }
+
+  function loadStudentPortal(id) {
+    const s = studentsData.find(st => st.Student_ID === id) || studentsData[0];
+    if (!s) return;
+    currentStudent = s;
+
+    document.getElementById('stScore').innerText = s.Performance_Score.toFixed(1);
+    document.getElementById('stStatusBadge').innerHTML = `<span class="badge badge-excellent">${s.Performance_Status}</span>`;
+    document.getElementById('stAttendance').innerText = s.Attendance.toFixed(1) + '%';
+    document.getElementById('stDeptAvg').innerText = s.Department_Average.toFixed(1);
+    const gap = s.Performance_Gap;
+    document.getElementById('stGap').innerText = (gap >= 0 ? '+' : '') + gap.toFixed(1) + ' vs ' + s.Department + ' peers';
+    document.getElementById('stSupport').innerText = s.Support_Flag;
+
+    // Reset sliders
+    document.getElementById('simAttendance').value = s.Attendance;
+    document.getElementById('sliderAttVal').innerText = s.Attendance.toFixed(1) + '%';
+    document.getElementById('simStudy').value = s.Study_Hours;
+    document.getElementById('sliderStudyVal').innerText = s.Study_Hours.toFixed(1) + ' hrs/day';
+
+    // Strengths
+    const ulStr = document.getElementById('stStrengths');
+    ulStr.innerHTML = s.Strengths.length ? s.Strengths.map(m => `<li><strong>${m}</strong> (&ge;80%)</li>`).join('') : '<li>No specific metric &ge;80% currently.</li>';
+
+    // Weaknesses
+    const ulWeak = document.getElementById('stWeaknesses');
+    ulWeak.innerHTML = s.Improvement_Areas.length ? s.Improvement_Areas.map(m => `<li><strong>${m}</strong> (&lt;65%)</li>`).join('') : '<li>No critical improvement area flagged.</li>';
+
+    // Recs
+    const ulRec = document.getElementById('stRecommendations');
+    ulRec.innerHTML = s.Recommendations.map(r => `<li>${r}</li>`).join('');
+
+    runWhatIf();
+  }
+
+  function runWhatIf() {
+    if (!currentStudent) return;
+    const att = parseFloat(document.getElementById('simAttendance').value);
+    const study = parseFloat(document.getElementById('simStudy').value);
+    document.getElementById('sliderAttVal').innerText = att.toFixed(1) + '%';
+    document.getElementById('sliderStudyVal').innerText = study.toFixed(1) + ' hrs/day';
+
+    const studyScore = Math.min((study / 6) * 100, 100);
+    const s = currentStudent;
+    const simScore = (s.Final_Marks * 0.35) + (att * 0.15) + (studyScore * 0.10) +
+                     (s.Assignment_Score * 0.10) + (s.Quiz_Average * 0.10) +
+                     (s.Practical_Score * 0.10) + (s.Internal_Marks * 0.10);
+
+    const rounded = Math.round(simScore * 10) / 10;
+    const diff = Math.round((rounded - s.Performance_Score) * 10) / 10;
+
+    let projStatus = 'Excellent';
+    if (rounded < 40) projStatus = 'High Risk';
+    else if (rounded < 55) projStatus = 'Attention';
+    else if (rounded < 70) projStatus = 'Stable';
+    else if (rounded < 85) projStatus = 'Good';
+
+    document.getElementById('simScoreDisplay').innerText = rounded.toFixed(1);
+    document.getElementById('simChangeDisplay').innerHTML = `Score Change: <strong>${(diff >= 0 ? '+' : '') + diff.toFixed(1)} pts</strong> &bull; Projected Status: <strong>${projStatus}</strong>`;
+  }
+
+  function showStudentModal(s) {
+    document.getElementById('modalName').innerText = `${s.Name} (${s.Student_ID})`;
+    document.getElementById('modalContent').innerHTML = `
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+        <div><strong>Department:</strong> ${s.Department}</div>
+        <div><strong>Semester:</strong> ${s.Semester}</div>
+        <div><strong>Performance Score:</strong> ${s.Performance_Score.toFixed(1)} (${s.Performance_Status})</div>
+        <div><strong>Attendance:</strong> ${s.Attendance.toFixed(1)}%</div>
+        <div><strong>Study Hours:</strong> ${s.Study_Hours} hrs/day</div>
+        <div><strong>Final Exam Marks:</strong> ${s.Final_Marks}</div>
+        <div><strong>Internal Marks:</strong> ${s.Internal_Marks}</div>
+        <div><strong>Practical Score:</strong> ${s.Practical_Score}</div>
+      </div>
+      <div style="background: #f8fafc; padding: 12px; border-radius: 6px; margin-bottom: 12px;">
+        <strong>Primary Pedagogical Insight:</strong> ${s.Primary_Insight}
+      </div>
+      <div style="margin-bottom: 12px;">
+        <strong>Targeted Recommendations:</strong>
+        <ul style="margin-left: 20px; margin-top: 6px;">
+          ${s.Recommendations.map(r => `<li>${r}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    document.getElementById('detailModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('detailModal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
