@@ -693,6 +693,27 @@
 </section>
 
 <script>
+let currentMentorLang = 'hinglish';
+
+function setMentorLang(lang) {
+    currentMentorLang = lang;
+    const btnH = document.getElementById('btnLangHinglish');
+    const btnE = document.getElementById('btnLangEnglish');
+    if (btnH && btnE) {
+        if (lang === 'hinglish') {
+            btnH.style.background = 'var(--primary,#0070f3)';
+            btnH.style.color = '#fff';
+            btnE.style.background = 'transparent';
+            btnE.style.color = 'var(--ink)';
+        } else {
+            btnE.style.background = 'var(--primary,#0070f3)';
+            btnE.style.color = '#fff';
+            btnH.style.background = 'transparent';
+            btnH.style.color = 'var(--ink)';
+        }
+    }
+}
+
 async function askGenAIMentor(promptText) {
     document.getElementById('genaiPromptInput').value = promptText;
     document.getElementById('genaiCustomForm').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
@@ -734,7 +755,8 @@ async function handleGenAISubmit(e) {
             content.textContent = data.answer;
         }
     } catch (err) {
-        content.innerHTML = '<span style="color:#b42318;">Unable to reach Generative AI mentor. Please try again.</span>';
+        console.error('Student GenAI Error:', err);
+        content.innerHTML = '<span style="color:#b42318;">' + (err.message || 'Unable to reach Generative AI mentor. Please try again.') + '</span>';
     } finally {
         btn.disabled = false;
         btn.textContent = 'Generate Guidance →';

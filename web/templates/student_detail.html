@@ -98,6 +98,27 @@ async function updateWhatIf(){const a=+document.getElementById('attendance').val
 </section>
 
 <script>
+let currentTeacherLang = 'hinglish';
+
+function setTeacherLang(lang) {
+    currentTeacherLang = lang;
+    const btnH = document.getElementById('btnTeacherLangHinglish');
+    const btnE = document.getElementById('btnTeacherLangEnglish');
+    if (btnH && btnE) {
+        if (lang === 'hinglish') {
+            btnH.style.background = 'var(--primary,#0070f3)';
+            btnH.style.color = '#fff';
+            btnE.style.background = 'transparent';
+            btnE.style.color = 'var(--ink)';
+        } else {
+            btnE.style.background = 'var(--primary,#0070f3)';
+            btnE.style.color = '#fff';
+            btnH.style.background = 'transparent';
+            btnH.style.color = 'var(--ink)';
+        }
+    }
+}
+
 async function generateTeacherAction(actionType) {
     const box = document.getElementById('teacherGenAIBox');
     const content = document.getElementById('teacherGenAIContent');
@@ -137,7 +158,8 @@ async function generateTeacherAction(actionType) {
             content.textContent = data.content;
         }
     } catch(err) {
-        content.innerHTML = '<span style="color:#b42318;">Unable to generate document right now. Please try again.</span>';
+        console.error('Teacher GenAI Error:', err);
+        content.innerHTML = '<span style="color:#b42318;">' + (err.message || 'Unable to generate document right now. Please try again.') + '</span>';
     }
 }
 
