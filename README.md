@@ -22,6 +22,8 @@ The **Student Performance Intelligence System** is an explainable, transparent a
 - **Department Benchmark & Performance Gap:** Compares individual achievement against departmental averages ($\text{Score} - \text{Dept. Avg}$).
 - **Actionable Pedagogical Insights:** Generates clear, non-generic recommendations (e.g., *"Improve attendance"*, *"Focus on quizzes"*).
 - **Interactive "What-If" Scenario Simulator:** Allows students to adjust sliders for attendance and study hours to simulate projected score improvements in real time.
+- **Supervised Machine Learning Models (scikit-learn):** Dual Random Forest Regressor and Classifier predicting final examination marks ($R^2=0.62, \text{MAE}=4.29$) and identifying at-risk support tiers with **91.0% accuracy** alongside Explainable AI feature importances.
+- **Generative AI Study Mentor & Pedagogical Advisor:** Powered by **Google Gemini 1.5 Flash** with zero-downtime offline fallback, drafting customized 7-day study timetables, parent advisory letters, and 4-week faculty remedial roadmaps.
 - **Dedicated Portals:** Separate, secure interfaces for Teachers and Students with Role-Based Access Control (RBAC).
 - **Local AI Query Assistant:** Natural language query engine answering educator questions without requiring external API tokens.
 

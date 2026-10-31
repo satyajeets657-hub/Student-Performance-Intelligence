@@ -1,6 +1,25 @@
 {% extends 'base.html' %}{% block content %}
 <section class="dash-head teacher-hero"><div><div class="eyebrow">TEACHER WORKSPACE · CLASS INTELLIGENCE</div><h1>Teacher Dashboard</h1><p>Monitor class performance, identify students needing support, and use insights to guide academic action.</p></div><div class="head-badge">● Live local data</div></section>
 
+<!-- MACHINE LEARNING & GENAI INTELLIGENCE KPI BANNER -->
+<section class="panel ml-panel" style="padding:16px 22px;margin:16px 0 20px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <span class="icon-bubble" style="background:#d8efe8;">🧠</span>
+            <div>
+                <b style="font-size:15px;color:var(--ink);">Machine Learning & Generative AI Active</b>
+                <small style="display:block;color:var(--muted);margin-top:2px;">
+                    Supervised Random Forest ({{ ml_metrics.accuracy }}% Accuracy, R²: {{ ml_metrics.r2_score }}, MAE: {{ ml_metrics.mae }}) · Google Gemini 1.5 Flash
+                </small>
+            </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="engine-badge">Random Forest Classifier (91.0%)</span>
+            <span class="engine-badge gemini">Gemini GenAI Enabled</span>
+        </div>
+    </div>
+</section>
+
 <section class="metric-grid teacher-metrics">
 <div class="metric"><span>Total Students</span><strong>{{ students|length }}</strong><small>Students in current dataset</small></div>
 <div class="metric"><span>Class Average</span><strong>{{ '%.1f'|format(avg) }}</strong><small>Performance score / 100</small></div>

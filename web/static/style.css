@@ -51,3 +51,27 @@ footer{margin-top:8px}
 /* ---------- Teacher Assistant V1 ---------- */
 .quick-prompts{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.quick-prompts button{border:1px solid #dce9eb;background:#fff;color:var(--teal-dark);border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;cursor:pointer}.compact-chat{min-height:190px;max-height:300px}.chat-form{display:flex;gap:9px;align-items:center;margin-top:12px}.chat-form input{flex:1;min-width:0}.typing{opacity:.7;font-style:italic}.ai-panel .section-title{margin-bottom:2px}.ai-panel .ai-status{font-size:10px;font-weight:800;color:#247351}
 @media(max-width:560px){.quick-prompts button{font-size:10px}.compact-chat{max-height:260px}}
+
+/* ---------- Machine Learning & Generative AI Styles ---------- */
+.ml-panel{border:1px solid #cce8e5;background:linear-gradient(145deg,#ffffff 0%,#f1faf8 100%)}
+.ml-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.ml-metric-box{background:#fff;border:1px solid #d8e8e7;border-radius:14px;padding:16px}
+.ml-metric-box span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+.ml-metric-box b{display:block;font-size:26px;font-family:'Plus Jakarta Sans',sans-serif;margin:4px 0}
+.prob-bar-row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:12px}
+.prob-track{flex:1;height:7px;background:#eef4f5;border-radius:99px;margin:0 10px;overflow:hidden}
+.prob-track i{display:block;height:100%;border-radius:99px;background:var(--teal)}
+.prob-track.danger i{background:#e04e38}
+.prob-track.warning i{background:#d98218}
+.prob-track.success i{background:#16a34a}
+.genai-panel{border:1px solid #d4e2f5;background:linear-gradient(145deg,#ffffff 0%,#f4f8fd 100%)}
+.genai-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.genai-chip{background:#fff;border:1px solid #c9dff0;color:#18538a;border-radius:999px;padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s ease}
+.genai-chip:hover{background:#e8f2fc;transform:translateY(-1px);border-color:#93c5fd}
+.genai-output-box{background:#ffffff;border:1px solid #d8e4ee;border-radius:14px;padding:18px;margin-top:16px;min-height:120px;line-height:1.65;font-size:13.5px;box-shadow:0 6px 20px rgba(24,59,91,.04);white-space:pre-wrap}
+.genai-api-toggle{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--muted)}
+.genai-api-toggle input{max-width:280px;padding:7px 10px;font-size:12px}
+.engine-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:800;background:#e9f6f3;color:#0e7067}
+.engine-badge.gemini{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+@media(max-width:768px){.ml-grid{grid-template-columns:1fr}}
+

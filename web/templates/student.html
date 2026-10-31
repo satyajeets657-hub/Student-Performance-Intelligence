@@ -560,6 +560,180 @@
 </div>
 
 
+
+<!-- MACHINE LEARNING PREDICTIVE ENGINE -->
+<section class="panel ml-panel" style="margin-top:24px;">
+    <div class="section-title">
+        <div>
+            <span class="icon-bubble">🧠</span>
+            <div>
+                <h2>Machine Learning Intelligence & Prediction</h2>
+                <small>Trained Random Forest Models · 91.0% Verified Accuracy · R²: 0.62</small>
+            </div>
+        </div>
+        <span class="engine-badge">● Supervised ML Active</span>
+    </div>
+
+    <div class="ml-grid">
+        <div class="ml-metric-box">
+            <span>ML Predicted Final Marks</span>
+            <b style="color:var(--teal);">{{ ml.predicted_final_marks }} / 100</b>
+            <small style="color:var(--muted);display:block;margin-top:4px;">
+                Trained on 500 academic records using 8 multi-variable indicators.
+            </small>
+
+            <div style="margin-top:16px;padding-top:12px;border-top:1px dashed #d8e8e7;">
+                <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">
+                    <span>Rule-Based Score: <b>{{ student.Performance_Score }}</b></span>
+                    <span>ML Predicted: <b>{{ ml.predicted_final_marks }}</b></span>
+                </div>
+                <div style="font-size:12px;color:var(--muted);">
+                    ML Classification: <b style="color:var(--ink);">{{ ml.predicted_support_flag }}</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="ml-metric-box">
+            <span>ML At-Risk Probabilities</span>
+            <div style="margin-top:10px;">
+                <div class="prob-bar-row">
+                    <span style="width:90px;">Normal</span>
+                    <div class="prob-track success"><i style="width:{{ ml.probabilities['Normal'] }}%"></i></div>
+                    <b>{{ ml.probabilities['Normal'] }}%</b>
+                </div>
+                <div class="prob-bar-row">
+                    <span style="width:90px;">Needs Support</span>
+                    <div class="prob-track warning"><i style="width:{{ ml.probabilities['Needs Support'] }}%"></i></div>
+                    <b>{{ ml.probabilities['Needs Support'] }}%</b>
+                </div>
+                <div class="prob-bar-row">
+                    <span style="width:90px;">High Priority</span>
+                    <div class="prob-track danger"><i style="width:{{ ml.probabilities['High Priority'] }}%"></i></div>
+                    <b>{{ ml.probabilities['High Priority'] }}%</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Importance Ranking -->
+    <div style="margin-top:20px;background:#ffffff;border:1px solid #d8e8e7;border-radius:14px;padding:16px;">
+        <span style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;">
+            Feature Importance (Impact of Indicators on Final Outcome)
+        </span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;margin-top:12px;">
+            {% for factor, weight in ml.feature_importances.items() %}
+            <div style="font-size:12px;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                    <span>{{ factor }}</span>
+                    <b>{{ weight }}%</b>
+                </div>
+                <div class="area-track"><i style="width:{{ weight * 2 }}%"></i></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- GENERATIVE AI ACADEMIC MENTOR -->
+<section class="panel genai-panel" style="margin-top:24px;">
+    <div class="section-title">
+        <div>
+            <span class="icon-bubble">✨</span>
+            <div>
+                <h2>Generative AI Academic Mentor</h2>
+                <small>Powered by Google Gemini 1.5 Flash with Zero-Downtime Local Pedagogical Engine</small>
+            </div>
+        </div>
+        <span id="genaiEngineBadge" class="engine-badge gemini">● GenAI Ready</span>
+    </div>
+
+    <p class="muted" style="margin-bottom:12px;">
+        Select an intelligent prompt below or type your own question to receive dynamic, multi-paragraph pedagogical guidance tailored specifically to your metrics.
+    </p>
+
+    <div class="genai-chips">
+        <button type="button" class="genai-chip" onclick="askGenAIMentor('📅 Generate a customized 7-day revision routine for my weak areas')">📅 7-Day Study Routine</button>
+        <button type="button" class="genai-chip" onclick="askGenAIMentor('🔬 How can I improve my practical lab performance and viva preparation?')">🔬 Practical Lab Strategy</button>
+        <button type="button" class="genai-chip" onclick="askGenAIMentor('🎯 Give me a high-impact exam maximization plan based on my internal and quiz marks')">🎯 Exam Maximization Plan</button>
+        <button type="button" class="genai-chip" onclick="askGenAIMentor('💡 Summarize my academic standing and primary action steps')">💡 Full Coaching Note</button>
+    </div>
+
+    <form id="genaiCustomForm" onsubmit="handleGenAISubmit(event)" style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+        <input id="genaiPromptInput" placeholder="Ask your Generative AI mentor any academic question..." style="flex:1;min-width:240px;" required>
+        <button type="submit" id="genaiSubmitBtn" class="btn">Generate Guidance →</button>
+    </form>
+
+    <div class="genai-api-toggle">
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+            <input type="checkbox" id="toggleApiKey" onchange="document.getElementById('customKeyWrap').style.display=this.checked?'flex':'none';" style="width:auto;margin:0;">
+            <span>Use Custom Google Gemini API Key</span>
+        </label>
+        <div id="customKeyWrap" style="display:none;align-items:center;gap:8px;">
+            <input type="password" id="customApiKey" placeholder="Paste AI Studio API key (AIzaSy...)">
+            <small style="color:var(--muted);">Leave blank to use built-in engine</small>
+        </div>
+    </div>
+
+    <div id="genaiOutputBox" class="genai-output-box" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eef4f8;padding-bottom:10px;margin-bottom:12px;">
+            <b style="color:var(--ink);">Academic Mentor Response:</b>
+            <span id="genaiSourceLabel" class="engine-badge">Engine</span>
+        </div>
+        <div id="genaiContent" style="white-space:pre-wrap;"></div>
+    </div>
+</section>
+
+<script>
+async function askGenAIMentor(promptText) {
+    document.getElementById('genaiPromptInput').value = promptText;
+    document.getElementById('genaiCustomForm').dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+}
+
+async function handleGenAISubmit(e) {
+    e.preventDefault();
+    const promptInput = document.getElementById('genaiPromptInput');
+    const prompt = promptInput.value.trim();
+    if (!prompt) return;
+
+    const btn = document.getElementById('genaiSubmitBtn');
+    const box = document.getElementById('genaiOutputBox');
+    const content = document.getElementById('genaiContent');
+    const sourceLabel = document.getElementById('genaiSourceLabel');
+    const customKey = document.getElementById('customApiKey') ? document.getElementById('customApiKey').value.trim() : '';
+
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+    box.style.display = 'block';
+    content.innerHTML = '<span class="muted">Thinking and analyzing academic signals...</span>';
+
+    try {
+        const response = await fetch('/api/genai-mentor', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: prompt, api_key: customKey })
+        });
+        const data = await response.json();
+        if (data.error) {
+            content.innerHTML = '<span style="color:#b42318;">' + data.error + '</span>';
+        } else {
+            sourceLabel.textContent = data.engine || 'AI Engine';
+            if (data.engine && data.engine.includes('Gemini')) {
+                sourceLabel.className = 'engine-badge gemini';
+            } else {
+                sourceLabel.className = 'engine-badge';
+            }
+            content.textContent = data.answer;
+        }
+    } catch (err) {
+        content.innerHTML = '<span style="color:#b42318;">Unable to reach Generative AI mentor. Please try again.</span>';
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Generate Guidance →';
+    }
+}
+</script>
+
+
 <script>
 
 const f = document.getElementById('aiForm');

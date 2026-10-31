@@ -21,3 +21,11 @@ $RECYCLE.BIN/
 # Temporary outputs / logs
 *.log
 cloudflared.exe
+*.wav
+*.mp3
+*.gif
+*.png
+generate_audio.py
+mix_vocals.py
+generate_animated_video.py
+lyrics_video_player.html

@@ -4,6 +4,8 @@ import sqlite3, hashlib, re
 from werkzeug.utils import secure_filename
 import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash, send_from_directory
+from web.ml_engine import predict_student_performance, get_ml_bundle
+from web.genai_engine import ask_student_mentor, ask_teacher_advisor
 BASE = Path(__file__).resolve().parents[1]
 DATA = BASE / 'data' / 'students.csv'
 DB = BASE / 'web' / 'student_intelligence.db'
@@ -376,14 +378,17 @@ def teacher_dashboard():
     rows=all_students(); departments=sorted({r['Department'] for r in rows})
     avg=sum(r['Performance_Score'] for r in rows)/len(rows); avg_att=sum(r['Attendance'] for r in rows)/len(rows)
     high=sum(r['Risk_Level']=='High' for r in rows); med=sum(r['Risk_Level']=='Medium' for r in rows)
-    return render_template('teacher.html', students=rows, departments=departments, avg=avg, avg_att=avg_att, high=high, med=med)
+    bundle = get_ml_bundle()
+    return render_template('teacher.html', students=rows, departments=departments, avg=avg, avg_att=avg_att, high=high, med=med, ml_metrics=bundle['metrics'], ml_features=bundle['feature_importances'])
 
 @app.route('/teacher/student/<student_id>')
 def teacher_student(student_id):
     if not login_required('teacher'): return redirect(url_for('login'))
     conn=get_db(); row=conn.execute('SELECT * FROM students WHERE Student_ID=?',(student_id,)).fetchone(); conn.close()
     if not row: return 'Student not found',404
-    return render_template('student_detail.html', student=enrich(row), teacher=True)
+    enriched = enrich(row)
+    ml_res = predict_student_performance(enriched)
+    return render_template('student_detail.html', student=enriched, teacher=True, ml=ml_res)
 
 @app.route('/api/teacher-ai', methods=['POST'])
 def teacher_ai():
@@ -528,7 +533,9 @@ def student_dashboard():
     if not login_required('student'): return redirect(url_for('login'))
     row=student_for_session()
     if not row: return 'Student profile not found',404
-    return render_template('student.html', student=enrich(row))
+    enriched = enrich(row)
+    ml_res = predict_student_performance(enriched)
+    return render_template('student.html', student=enriched, ml=ml_res)
 
 @app.route('/api/student-ai', methods=['POST'])
 def student_ai():
@@ -626,6 +633,60 @@ def student_whatif():
     simulated['Study_Hours'] = max(0, study)
     score = performance_score(simulated)
     return jsonify({'score': score, 'status': status(score), 'change': round(score - row['Performance_Score'], 1)})
+
+@app.route('/api/ml-prediction', methods=['GET', 'POST'])
+def api_ml_prediction():
+    if not (login_required('student') or login_required('teacher')):
+        return jsonify({'error': 'Unauthorised'}), 401
+    sid = None
+    if request.is_json and request.json:
+        sid = request.json.get('student_id')
+    if not sid:
+        sid = request.args.get('student_id')
+    if session.get('role') == 'teacher' and sid:
+        conn = get_db()
+        row = conn.execute('SELECT * FROM students WHERE Student_ID=?', (sid,)).fetchone()
+        conn.close()
+    else:
+        row = student_for_session()
+    if not row:
+        return jsonify({'error': 'Student not found'}), 404
+    pred = predict_student_performance(enrich(row))
+    return jsonify(pred)
+
+@app.route('/api/genai-mentor', methods=['POST'])
+def api_genai_mentor():
+    if not login_required('student'):
+        return jsonify({'error': 'Please login as student.'}), 401
+    row = student_for_session()
+    if not row:
+        return jsonify({'error': 'Student not found'}), 404
+    data = request.get_json(silent=True) or {}
+    prompt = data.get('prompt', '').strip()
+    api_key = data.get('api_key', '').strip() or None
+    if not prompt:
+        return jsonify({'error': 'Prompt is required.'}), 400
+    result = ask_student_mentor(enrich(row), prompt, api_key=api_key)
+    return jsonify(result)
+
+@app.route('/api/genai-teacher', methods=['POST'])
+def api_genai_teacher():
+    if not login_required('teacher'):
+        return jsonify({'error': 'Please login as teacher.'}), 401
+    data = request.get_json(silent=True) or {}
+    sid = data.get('student_id', '').strip()
+    action_type = data.get('action_type', 'observation_note')
+    custom_prompt = data.get('custom_prompt', '').strip()
+    api_key = data.get('api_key', '').strip() or None
+    if not sid:
+        return jsonify({'error': 'Student ID is required.'}), 400
+    conn = get_db()
+    row = conn.execute('SELECT * FROM students WHERE Student_ID=?', (sid,)).fetchone()
+    conn.close()
+    if not row:
+        return jsonify({'error': f'Student {sid} not found.'}), 404
+    result = ask_teacher_advisor(enrich(row), action_type, custom_prompt=custom_prompt, api_key=api_key)
+    return jsonify(result)
 
 if __name__ == '__main__':
     import threading, time, webbrowser

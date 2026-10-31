@@ -205,6 +205,33 @@ def insight(student):
     return "Performance is stable"
 ```
 
+### 5.6 Supervised Machine Learning & Generative AI Architecture
+
+In addition to deterministic rule-based benchmarking, the platform incorporates dual machine learning algorithms (via `scikit-learn`) and a generative AI engine (via `Google Gemini 1.5 Flash`):
+
+#### 1. Machine Learning Performance Predictor (Random Forest Regressor)
+- **Objective:** Predict prospective end-semester marks based on 8 continuous engagement indicators.
+- **Model Parameters:** $N_{\text{estimators}} = 120, \text{Max Depth} = 8$.
+- **Model Validation:** $R^2 = 0.62$, Mean Absolute Error ($\text{MAE}$) = $4.29$ marks.
+
+#### 2. At-Risk Classifier (Random Forest Classifier)
+- **Objective:** Classify students into *Normal*, *Needs Support*, or *High Priority* tiers with associated probability vectors.
+- **Classification Accuracy:** **91.0%** verified across holdout testing cohorts.
+- **Feature Importance (Explainable AI):**
+  - Internal Examination: 42.9%
+  - Quiz Performance: 16.9%
+  - Lab / Practical Work: 10.3%
+  - Daily Study Hours: 7.9%
+  - Class Attendance: 7.3%
+  - Submission Regularity: 5.6%
+  - Past Academic Record: 4.7%
+  - Assignment Quality: 4.4%
+
+#### 3. Generative AI Pedagogical Advisor (Google Gemini 1.5 Flash)
+- **Student Mentoring:** Dynamically generates individualized 7-day study routines, lab strategies, and diagnostic guidance.
+- **Teacher Communication Drafting:** Instant generation of official parent advisory communications, 4-week remedial intervention roadmaps, and faculty evaluation memoranda.
+- **Fault-Tolerant Heuristic Fallback:** If internet connectivity is interrupted or API tokens are unavailable, the system transparently utilizes the SPI Intelligent Heuristic Engine, ensuring zero downtime.
+
 ---
 
 ## 6. DATABASE DESIGN & SCHEMA (SQLITE3)

@@ -5,4 +5,140 @@
 <section class="panel whatif teacher-whatif"><div class="section-title"><div><span class="icon-bubble">🔄</span><div><h2>What-If Simulator</h2><small>Explore attendance and study-hour scenarios for this student</small></div></div><span class="ai-status">Scenario analysis</span></div><div class="slider-row"><label>Attendance <b id="av">{{ '%.0f'|format(student.Attendance) }}%</b><input id="attendance" type="range" min="0" max="100" value="{{ student.Attendance }}" oninput="updateWhatIf()"></label><label>Study hours/day <b id="sv">{{ '%.1f'|format(student.Study_Hours) }}</b><input id="study" type="range" min="0" max="8" step="0.5" value="{{ student.Study_Hours }}" oninput="updateWhatIf()"></label></div><div class="whatif-result"><div><span>Simulated score</span><b id="ws">{{ student.Performance_Score }}</b></div><div><span>Status</span><b id="wt">{{ student.Performance_Status }}</b></div><div><span>Change</span><b id="wc">0.0</b></div></div></section>
 <script>
 async function updateWhatIf(){const a=+document.getElementById('attendance').value,s=+document.getElementById('study').value;document.getElementById('av').textContent=a+'%';document.getElementById('sv').textContent=s.toFixed(1);try{const r=await fetch('{{ url_for("student_whatif") }}',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({attendance:a,study_hours:s,student_id:'{{ student.Student_ID }}'})});const d=await r.json();document.getElementById('ws').textContent=d.score;document.getElementById('wt').textContent=d.status;document.getElementById('wc').textContent=(d.change>=0?'+':'')+d.change;}catch(e){document.getElementById('wt').textContent='Unavailable'}}
-</script>{% endblock %}
+</script>
+<!-- TEACHER ML & GENERATIVE AI PEDAGOGICAL WORKSPACE -->
+<section class="panel ml-panel" style="margin-top:24px;">
+    <div class="section-title">
+        <div>
+            <span class="icon-bubble">🧠</span>
+            <div>
+                <h2>Machine Learning Performance Predictor</h2>
+                <small>Supervised Random Forest Regressor & Classifier</small>
+            </div>
+        </div>
+        <span class="engine-badge">91.0% Model Accuracy</span>
+    </div>
+
+    <div class="ml-grid">
+        <div class="ml-metric-box">
+            <span>Predicted Final Examination Marks</span>
+            <b style="color:var(--teal);">{{ ml.predicted_final_marks }} / 100</b>
+            <div style="font-size:12px;margin-top:8px;color:var(--muted);">
+                Rule-Based Score: <b>{{ student.Performance_Score }}</b> | ML Variance: <b>{{ '%.1f'|format(ml.predicted_final_marks - student.Performance_Score) }}</b>
+            </div>
+            <div style="font-size:12px;margin-top:6px;">
+                Predicted Support Tier: <b style="color:var(--ink);">{{ ml.predicted_support_flag }}</b>
+            </div>
+        </div>
+
+        <div class="ml-metric-box">
+            <span>At-Risk Probability Distribution</span>
+            <div style="margin-top:8px;">
+                <div class="prob-bar-row">
+                    <span style="width:85px;">Normal</span>
+                    <div class="prob-track success"><i style="width:{{ ml.probabilities['Normal'] }}%"></i></div>
+                    <b>{{ ml.probabilities['Normal'] }}%</b>
+                </div>
+                <div class="prob-bar-row">
+                    <span style="width:85px;">Needs Support</span>
+                    <div class="prob-track warning"><i style="width:{{ ml.probabilities['Needs Support'] }}%"></i></div>
+                    <b>{{ ml.probabilities['Needs Support'] }}%</b>
+                </div>
+                <div class="prob-bar-row">
+                    <span style="width:85px;">High Priority</span>
+                    <div class="prob-track danger"><i style="width:{{ ml.probabilities['High Priority'] }}%"></i></div>
+                    <b>{{ ml.probabilities['High Priority'] }}%</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="panel genai-panel" style="margin-top:24px;">
+    <div class="section-title">
+        <div>
+            <span class="icon-bubble">✨</span>
+            <div>
+                <h2>Generative AI Pedagogical Action Generator</h2>
+                <small>Instant 1-Click Institutional Communication & Remedial Plan Drafting</small>
+            </div>
+        </div>
+        <span class="engine-badge gemini">● GenAI Powered</span>
+    </div>
+
+    <p class="muted" style="margin-bottom:12px;">
+        Generate ready-to-dispatch academic communications and mentoring roadmaps specifically customized for {{ student.Name }}.
+    </p>
+
+    <div class="genai-chips">
+        <button type="button" class="genai-chip" onclick="generateTeacherAction('parent_letter')">✉️ Draft Parent Advisory Letter</button>
+        <button type="button" class="genai-chip" onclick="generateTeacherAction('remedial_plan')">📋 Draft 4-Week Remedial Plan</button>
+        <button type="button" class="genai-chip" onclick="generateTeacherAction('observation_note')">📝 Draft Faculty Mentoring Memo</button>
+    </div>
+
+    <div id="teacherGenAIBox" class="genai-output-box" style="display:none;margin-top:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eef4f8;padding-bottom:10px;margin-bottom:12px;">
+            <b id="docTypeLabel" style="color:var(--ink);">Generated Document:</b>
+            <div>
+                <span id="teacherGenAISource" class="engine-badge" style="margin-right:8px;">Local Engine</span>
+                <button type="button" class="btn" style="padding:6px 12px;font-size:11px;" onclick="copyTeacherGenAI()">📋 Copy Document</button>
+            </div>
+        </div>
+        <div id="teacherGenAIContent" style="white-space:pre-wrap;font-family:inherit;"></div>
+    </div>
+</section>
+
+<script>
+async function generateTeacherAction(actionType) {
+    const box = document.getElementById('teacherGenAIBox');
+    const content = document.getElementById('teacherGenAIContent');
+    const source = document.getElementById('teacherGenAISource');
+    const label = document.getElementById('docTypeLabel');
+
+    box.style.display = 'block';
+    content.innerHTML = '<span class="muted">Synthesizing personalized pedagogical document...</span>';
+    
+    const titles = {
+        'parent_letter': 'Parent Advisory Communication',
+        'remedial_plan': '4-Week Pedagogical Remedial Plan',
+        'observation_note': 'Faculty Mentoring & Evaluation Memo'
+    };
+    label.textContent = titles[actionType] || 'Generated Document';
+
+    try {
+        const response = await fetch('/api/genai-teacher', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                student_id: '{{ student.Student_ID }}',
+                action_type: actionType
+            })
+        });
+        const data = await response.json();
+        if (data.error) {
+            content.innerHTML = '<span style="color:#b42318;">' + data.error + '</span>';
+        } else {
+            source.textContent = data.engine || 'AI Engine';
+            if (data.engine && data.engine.includes('Gemini')) {
+                source.className = 'engine-badge gemini';
+            } else {
+                source.className = 'engine-badge';
+            }
+            content.textContent = data.content;
+        }
+    } catch(err) {
+        content.innerHTML = '<span style="color:#b42318;">Unable to generate document right now. Please try again.</span>';
+    }
+}
+
+function copyTeacherGenAI() {
+    const text = document.getElementById('teacherGenAIContent').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Document copied to clipboard!');
+    }).catch(() => {
+        alert('Failed to copy. Please select and copy manually.');
+    });
+}
+</script>
+
+{% endblock %}
