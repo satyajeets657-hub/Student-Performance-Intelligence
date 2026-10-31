@@ -664,9 +664,10 @@ def api_genai_mentor():
     data = request.get_json(silent=True) or {}
     prompt = data.get('prompt', '').strip()
     api_key = data.get('api_key', '').strip() or None
+    lang = data.get('lang', 'hinglish').strip().lower()
     if not prompt:
         return jsonify({'error': 'Prompt is required.'}), 400
-    result = ask_student_mentor(enrich(row), prompt, api_key=api_key)
+    result = ask_student_mentor(enrich(row), prompt, api_key=api_key, lang=lang)
     return jsonify(result)
 
 @app.route('/api/genai-teacher', methods=['POST'])
@@ -678,6 +679,7 @@ def api_genai_teacher():
     action_type = data.get('action_type', 'observation_note')
     custom_prompt = data.get('custom_prompt', '').strip()
     api_key = data.get('api_key', '').strip() or None
+    lang = data.get('lang', 'hinglish').strip().lower()
     if not sid:
         return jsonify({'error': 'Student ID is required.'}), 400
     conn = get_db()
@@ -685,7 +687,7 @@ def api_genai_teacher():
     conn.close()
     if not row:
         return jsonify({'error': f'Student {sid} not found.'}), 404
-    result = ask_teacher_advisor(enrich(row), action_type, custom_prompt=custom_prompt, api_key=api_key)
+    result = ask_teacher_advisor(enrich(row), action_type, custom_prompt=custom_prompt, api_key=api_key, lang=lang)
     return jsonify(result)
 
 if __name__ == '__main__':

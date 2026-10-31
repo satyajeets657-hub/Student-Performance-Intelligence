@@ -651,6 +651,15 @@
         Select an intelligent prompt below or type your own question to receive dynamic, multi-paragraph pedagogical guidance tailored specifically to your metrics.
     </p>
 
+    <!-- LANGUAGE SELECTOR -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+        <span style="font-size:13px;font-weight:600;color:var(--ink);">Guidance Language / भाषा:</span>
+        <div style="display:inline-flex;background:#eef4f8;border-radius:20px;padding:3px;gap:4px;border:1px solid #dbeafe;">
+            <button type="button" id="btnLangHinglish" onclick="setMentorLang('hinglish')" style="border:none;border-radius:16px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;background:var(--primary,#0070f3);color:#fff;transition:all 0.2s;">🇮🇳 Hinglish (Default)</button>
+            <button type="button" id="btnLangEnglish" onclick="setMentorLang('english')" style="border:none;border-radius:16px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;background:transparent;color:var(--ink);transition:all 0.2s;">🌐 English</button>
+        </div>
+    </div>
+
     <div class="genai-chips">
         <button type="button" class="genai-chip" onclick="askGenAIMentor('📅 Generate a customized 7-day revision routine for my weak areas')">📅 7-Day Study Routine</button>
         <button type="button" class="genai-chip" onclick="askGenAIMentor('🔬 How can I improve my practical lab performance and viva preparation?')">🔬 Practical Lab Strategy</button>
@@ -710,7 +719,7 @@ async function handleGenAISubmit(e) {
         const response = await fetch('/api/genai-mentor', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: prompt, api_key: customKey })
+            body: JSON.stringify({ prompt: prompt, api_key: customKey, lang: currentMentorLang })
         });
         const data = await response.json();
         if (data.error) {

@@ -70,6 +70,15 @@ async function updateWhatIf(){const a=+document.getElementById('attendance').val
         Generate ready-to-dispatch academic communications and mentoring roadmaps specifically customized for {{ student.Name }}.
     </p>
 
+    <!-- LANGUAGE SELECTOR -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+        <span style="font-size:13px;font-weight:600;color:var(--ink);">Document Language / भाषा:</span>
+        <div style="display:inline-flex;background:#eef4f8;border-radius:20px;padding:3px;gap:4px;border:1px solid #dbeafe;">
+            <button type="button" id="btnTeacherLangHinglish" onclick="setTeacherLang('hinglish')" style="border:none;border-radius:16px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;background:var(--primary,#0070f3);color:#fff;transition:all 0.2s;">🇮🇳 Hinglish (Default)</button>
+            <button type="button" id="btnTeacherLangEnglish" onclick="setTeacherLang('english')" style="border:none;border-radius:16px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;background:transparent;color:var(--ink);transition:all 0.2s;">🌐 English</button>
+        </div>
+    </div>
+
     <div class="genai-chips">
         <button type="button" class="genai-chip" onclick="generateTeacherAction('parent_letter')">✉️ Draft Parent Advisory Letter</button>
         <button type="button" class="genai-chip" onclick="generateTeacherAction('remedial_plan')">📋 Draft 4-Week Remedial Plan</button>
@@ -111,7 +120,8 @@ async function generateTeacherAction(actionType) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 student_id: '{{ student.Student_ID }}',
-                action_type: actionType
+                action_type: actionType,
+                lang: currentTeacherLang
             })
         });
         const data = await response.json();

@@ -444,7 +444,15 @@
         <span class="badge badge-good">100% Explainable &bull; Zero External API</span>
       </div>
       <div class="ai-box">
-        <div class="ai-chips">
+        <!-- LANGUAGE SELECTOR -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
+        <span style="font-size:12px;font-weight:600;color:#334155;">Guidance Language / भाषा:</span>
+        <div style="display:inline-flex;background:#e2e8f0;border-radius:20px;padding:2px;gap:3px;">
+          <button type="button" id="webLangHinglish" onclick="setWebGenAiLang('hinglish')" style="border:none;border-radius:14px;padding:3px 12px;font-size:11px;font-weight:600;cursor:pointer;background:#2563eb;color:#fff;">🇮🇳 Hinglish (Default)</button>
+          <button type="button" id="webLangEnglish" onclick="setWebGenAiLang('english')" style="border:none;border-radius:14px;padding:3px 12px;font-size:11px;font-weight:600;cursor:pointer;background:transparent;color:#334155;">🌐 English</button>
+        </div>
+      </div>
+      <div class="ai-chips">
           <span class="chip" onclick="askAi('class summary')">📊 Class summary</span>
           <span class="chip" onclick="askAi('high risk students')">⚠️ High-risk students</span>
           <span class="chip" onclick="askAi('who are the top students')">🏆 Top students</span>
@@ -850,6 +858,126 @@
     }
 
     box.innerHTML = `I can answer queries like <em>class summary</em>, <em>top students</em>, <em>high risk</em>, <em>low attendance</em>, <em>department averages</em>, or any student ID like <em>ST0001</em>.`;
+  }
+
+  
+  let currentWebGenAiLang = 'hinglish';
+
+  function setWebGenAiLang(lang) {
+    currentWebGenAiLang = lang;
+    const btnH = document.getElementById('webLangHinglish');
+    const btnE = document.getElementById('webLangEnglish');
+    if (lang === 'hinglish') {
+      btnH.style.background = '#2563eb';
+      btnH.style.color = '#fff';
+      btnE.style.background = 'transparent';
+      btnE.style.color = '#334155';
+    } else {
+      btnE.style.background = '#2563eb';
+      btnE.style.color = '#fff';
+      btnH.style.background = 'transparent';
+      btnH.style.color = '#334155';
+    }
+  }
+
+  function askGenAiWeb(type) {
+    const s = currentStudent || studentsData[0];
+    if (!s) return;
+    const box = document.getElementById('genaiWebResponse');
+    box.style.display = 'block';
+
+    const weakStr = (s.Improvement_Areas && s.Improvement_Areas.length) ? s.Improvement_Areas.join(', ') : 'Overall Concepts & Revision';
+    const weakPrimary = (s.Improvement_Areas && s.Improvement_Areas.length) ? s.Improvement_Areas[0] : 'core syllabus';
+
+    if (currentWebGenAiLang === 'hinglish') {
+      if (type === 'timetable') {
+        box.innerHTML = `<strong>📅 7-Day Personalized Revision Routine (Hinglish)</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Department:</strong> ${s.Department}
+<strong>Current Score:</strong> ${s.Performance_Score.toFixed(1)}/100 | <strong>Focus Areas:</strong> ${weakStr}
+
+✨ <strong>Day-by-Day Action Plan:</strong>
+• <strong>Day 1 - 2 (Fundamentals & Weak Areas):</strong> Sabse pehle apne weak subjects (${weakPrimary}) ko daily 2 ghante fresh mind se cover karo. Notes aur formulas ki quick summary sheet bana lo.
+• <strong>Day 3 - 4 (Lab & Practical Revision):</strong> Practical score boost karne ke liye key lab experiments, code logic aur viva questions revise karo. Har step ko verbally explain karne ki practice karo.
+• <strong>Day 5 (Internal Marks & Quiz Review):</strong> Pichle quizzes aur internal test papers analyze karo jisme marks deduct hue the. Common mistakes ko mark karke rectify karo.
+• <strong>Day 6 (Full Speed Timed Mock Exam):</strong> Clock set karke full syllabus mock attempt karo. Time management aur neat presentation par focus rakho.
+• <strong>Day 7 (Stress-Free Consolidation):</strong> Formula revision aur high-yield topics ka quick glance. Confidence maintain rakho aur achhi neend lo!
+
+💡 <em>Pedagogical Advice:</em> Consistency hi sabse badi key hai. Daily study hours maintain karo aur attendance 85%+ par rakho!`;
+      } else if (type === 'practical') {
+        box.innerHTML = `<strong>🔬 Practical Lab & Viva Strategy (Hinglish)</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Current Practical:</strong> ${s.Practical_Score}/100
+
+💡 <strong>Action Steps:</strong>
+1. <strong>Lab Manual & Observations:</strong> Sabse pehle complete calculations, error analysis aur readings ko verify karo. Viva me examiner hamesha observation accuracy check karte hain.
+2. <strong>Core Principle Viva Prep:</strong> Har experiment ke piche ka fundamental theory aur objective clear rakho. "Why this step?" aur "What if readings fluctuate?" jaise questions prepare karo.
+3. <strong>Pre-Lab Rehearsal:</strong> Lab session se pehle apparatus aur flowchart ko 15 minute visualize karo. Real practical ke time confidence 2x rahega.`;
+      } else if (type === 'exam') {
+        box.innerHTML = `<strong>🎯 Exam Score Maximization Plan (Hinglish)</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Current Score:</strong> ${s.Performance_Score.toFixed(1)}/100
+
+📈 <strong>Score Boost Framework:</strong>
+1. <strong>High-Yield Question Targeting:</strong> Previous 5 years ke question papers analyze karo. Wo topics select karo jo maximum marks carry karte hain.
+2. <strong>Structured Answer Presentation:</strong> Bullet points, flowcharts aur formulas ko box me enclose karo. Examiners ko neat aur structured answers par highest marks milte hain.
+3. <strong>Speed & Time Allocation:</strong> Har question ke marks ke hisaab se time divide karo (e.g., 10 marks question = 18 minutes). End me 10 minute revision ke liye bacha ke rakho.`;
+      } else if (type === 'parent') {
+        box.innerHTML = `<strong>✉️ Parent Advisory Letter (Hinglish)</strong>
+<strong>To:</strong> Parents / Guardians of ${s.Name} (${s.Student_ID})
+<strong>Department:</strong> ${s.Department}, Semester ${s.Semester}
+
+Respected Parents,
+Hum aapko ${s.Name} ki current academic progress report provide kar rahe hain:
+• Overall Performance Score: <strong>${s.Performance_Score.toFixed(1)} / 100 (${s.Performance_Status})</strong>
+• Class Attendance: <strong>${s.Attendance.toFixed(1)}%</strong> | Daily Study Hours: <strong>${s.Study_Hours} hrs/day</strong>
+• Risk Priority Level: <strong>${s.Risk_Level}</strong>
+
+${s.Risk_Level === 'High' ? 'Kripya student ke daily study routine aur attendance par thoda aur dhyan dein taaki upcoming final exams me marks optimize ho sakein.' : 'Student ka overall academic record satisfactory hai. Continuous encouragement se student aur bhi behtar perform kar sakta hai.'}
+
+Aapke continuous support aur cooperation ke liye dhanyawad.
+<em>Academic Mentoring Cell, ${s.Department}</em>`;
+      }
+    } else {
+      // English version
+      if (type === 'timetable') {
+        box.innerHTML = `<strong>📅 7-Day Strategic Revision Routine</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Department:</strong> ${s.Department}
+<strong>Current Score:</strong> ${s.Performance_Score.toFixed(1)}/100 | <strong>Focus Areas:</strong> ${weakStr}
+
+• <strong>Days 1 - 2:</strong> Prioritize core focus areas (${weakPrimary}) with dedicated 2-hour morning revision blocks.
+• <strong>Days 3 - 4:</strong> Focus on practical applications, lab manuals, and experiment procedures to bolster practical performance.
+• <strong>Day 5:</strong> Review previous quizzes and internal test corrections to eliminate recurrent examination errors.
+• <strong>Day 6:</strong> Complete a timed full-length mock assessment under simulated exam conditions.
+• <strong>Day 7:</strong> Rapid formula recapitulation and confidence-building review.`;
+      } else if (type === 'practical') {
+        box.innerHTML = `<strong>🔬 Practical Lab Strategy</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Practical Score:</strong> ${s.Practical_Score}/100
+
+1. <strong>Lab Manual Rigor:</strong> Complete all pending observation tables and procedural error calculations.
+2. <strong>Viva Voce Readiness:</strong> Prepare concise 2-minute oral summaries for every major experiment.
+3. <strong>Pre-Lab Dry Runs:</strong> Diagram circuits, algorithms, or apparatus setups 15 minutes before practical evaluations.`;
+      } else if (type === 'exam') {
+        box.innerHTML = `<strong>🎯 Exam Maximization Plan</strong>
+<strong>Student:</strong> ${s.Name} (${s.Student_ID}) | <strong>Performance Score:</strong> ${s.Performance_Score.toFixed(1)}/100
+
+1. <strong>High-Yield Topic Prioritization:</strong> Master previous 5-year repeated problem sets.
+2. <strong>Structural Presentation:</strong> Utilize bullet points, formula callouts, and diagrams to maximize grading rubrics.
+3. <strong>Pacing & Revision:</strong> Allocate 1.5 minutes per mark with a 15-minute final review window.`;
+      } else if (type === 'parent') {
+        box.innerHTML = `<strong>✉️ Formal Parent Advisory Notice</strong>
+<strong>To:</strong> Parents / Guardians of ${s.Name} (${s.Student_ID})
+<strong>Department:</strong> ${s.Department}, Semester ${s.Semester}
+
+Dear Parents/Guardians,
+This notice conveys ${s.Name}'s mid-term academic indicators:
+• Performance Score: <strong>${s.Performance_Score.toFixed(1)} / 100 (${s.Performance_Status})</strong>
+• Attendance Rate: <strong>${s.Attendance.toFixed(1)}%</strong> | Study Hours: <strong>${s.Study_Hours} hrs/day</strong>
+• Academic Risk Priority: <strong>${s.Risk_Level}</strong>
+
+${s.Risk_Level === 'High' ? 'We urge collaborative parental reinforcement of daily study habits and strict class attendance ahead of end-semester assessments.' : 'The student demonstrates solid academic engagement. Continued encouragement will sustain this standard.'}
+
+Sincerely,
+<em>Academic Mentoring Cell, ${s.Department}</em>`;
+      }
+    }
   }
 
   function loadStudentPortal(id) {
