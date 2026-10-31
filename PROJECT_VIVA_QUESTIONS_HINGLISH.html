@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Student Performance Intelligence - Viva & Interview Questions (Hinglish)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap');
+
+  @page {
+    size: A4;
+    margin: 14mm 12mm 14mm 12mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1e293b;
+    background: #ffffff;
+    line-height: 1.55;
+    font-size: 13px;
+  }
+
+  .cover {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0369a1 100%);
+    color: white;
+    padding: 32px 28px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    page-break-after: avoid;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
+  }
+
+  .badge-project {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .cover h1 {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .cover p.subtitle {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 11.5px;
+  }
+
+  .meta-grid div strong {
+    display: block;
+    color: #93c5fd;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .section-header {
+    background: #f1f5f9;
+    border-left: 5px solid #2563eb;
+    padding: 10px 14px;
+    margin: 22px 0 14px 0;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-after: avoid;
+  }
+
+  .section-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .section-header .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .q-card {
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+  }
+
+  .q-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .q-num {
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .examiner-intent {
+    background: #fefce8;
+    border: 1px dashed #fde047;
+    color: #854d0e;
+    font-size: 11.5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+
+  .examiner-intent strong {
+    color: #713f12;
+  }
+
+  .answer-box {
+    color: #334155;
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  .answer-box p {
+    margin-bottom: 6px;
+  }
+
+  .answer-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .key-terms {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+
+  .key-terms span.label {
+    font-weight: 600;
+    color: #64748b;
+  }
+
+  .pill {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 10.5px;
+  }
+
+  .formula-box {
+    background: #f8fafc;
+    border-left: 3px solid #0284c7;
+    padding: 8px 12px;
+    font-family: 'Fira Code', monospace;
+    font-size: 11.5px;
+    color: #0369a1;
+    margin: 6px 0;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .pro-tip {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    margin-top: 8px;
+  }
+
+  .pro-tip strong {
+    color: #047857;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  @media print {
+    body {
+      background: transparent;
+      color: #000;
+    }
+    .cover {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .q-card {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .section-header {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER HEADER -->
+<div class="cover">
+  <div class="badge-project">Academic Project Viva & Technical Interview Master Guide</div>
+  <h1>Student Performance Intelligence (SPI)</h1>
+  <p class="subtitle">Complete Viva-Voce, Project Defense & Technical Interview Preparation Guide in Natural Hinglish with Ideal Answers, Examiner Psychology & Technical Formulations.</p>
+  
+  <div class="meta-grid">
+    <div>
+      <strong>Project Domain</strong>
+      EdTech / ML & GenAI Intelligence
+    </div>
+    <div>
+      <strong>Machine Learning</strong>
+      Random Forest (Reg: R²=0.62 | Clf: 91.0%)
+    </div>
+    <div>
+      <strong>Generative AI</strong>
+      Google Gemini 1.5 Flash + Local Fallback
+    </div>
+    <div>
+      <strong>Target Roles</strong>
+      Viva, External Defense & Tech Interview
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section-header">
+  <h2>Section 1: Project Overview & Core Motivation (बुनियादी सवाल)</h2>
+  <span class="section-tag">Total: 4 Questions</span>
+</div>
+
+<!-- Q1 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q1</span>
+    <span>Aapke project ka basic concept aur main objective kya hai? Ye real world me kya problem solve karta hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Kya aapko project ka practical motivation aur real-world problem clear hai ya sirf code ratta mara hai?
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, hamare project ka naam hai <strong>Student Performance Intelligence (SPI)</strong>. Aaj kal universities aur colleges me sabse badi problem ye hai ki teachers ko semester ke <em>end me</em> pata chalta hai ki kaunsa student fail ho raha hai ya drop out hone wala hai, jab bohot der ho chuki hoti hai.</p>
+    <p>Hamara system semester ke dauran hi continuous academic parameters (Attendance, Daily Study Hours, Quizzes, Lab Practicals, Assignments aur Internals) ko combine karke <strong>Early Warning Intelligence</strong> deta hai. Isme 3 layers hain:</p>
+    <p>1. <strong>Deterministic Rule Engine:</strong> Jo transparent 100-point performance score calculate karta hai.<br>
+       2. <strong>Supervised Machine Learning:</strong> Random Forest model jo future performance predict karta hai aur 91.0% accuracy ke sath student ko High/Medium/Low Risk me categorize karta hai.<br>
+       3. <strong>Generative AI (Hinglish + English):</strong> Jo generic tips ke bajaye student ke exact weak points par personalized 7-Day Study Routine banata hai aur teachers ke liye instant Parent Letters draft karta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Early Warning System</span>
+    <span class="pill">Proactive Intervention</span>
+    <span class="pill">Drop-out Prevention</span>
+    <span class="pill">3-Tier Intelligence Architecture</span>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q2</span>
+    <span>Existing College Portals ya ERPs se aapka system kaise alag aur behtar hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Novelty factor aur project ki unique selling proposition (USP).
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, existing college ERPs sirf <strong>passive data storage</strong> ka kaam karte hain — wo sirf marksheet aur attendance record rakhne ka excel sheet jaisa database hain, jisme koi intelligence ya guidance nahi hoti.</p>
+    <p>Hamara system <strong>Active Decision-Support System</strong> hai:
+    <br>• <strong>What-If Simulator:</strong> Student khud check kar sakta hai ki agar wo daily attendance 10% badhaye ya study hours 2 ghante badhaye toh uska final score kitna points jump karega.
+    <br>• <strong>Automated Pedagogical Action:</strong> Normal systems teacher ko action lene me help nahi karte. Hamara system 1-click me personalized Parent Advisory Letter aur 4-Week Remedial Plan draft kar deta hai.
+    <br>• <strong>Bilingual GenAI:</strong> Student apni language (natural Hinglish ya English) me mentor guidance le sakta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Active vs Passive ERP</span>
+    <span class="pill">What-If Simulation</span>
+    <span class="pill">Automated Remedial Workflow</span>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q3</span>
+    <span>Is system ke main user roles kaun se hain aur unhe kya capabilities milti hain?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Role-Based Access Control (RBAC) aur user persona mapping.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, system me do primary roles define kiye gaye hain:
+    <br>1. <strong>Teacher Cockpit:</strong> Teacher pure class ka overview dekh sakte hain — Class Average (79.0), Total High Priority/Risk count (15 students), Risk Distribution, Department-wise averages, aur kisi bhi student ka deep diagnostic profile dekh kar 1-click me Parent Letter ya Remedial Memo generate kar sakte hain. Saath hi learning materials upload/delete kar sakte hain.
+    <br>2. <strong>Student Portal:</strong> Student apna personalized scorecard, score breakdown, department peer gap (+3.5 pts vs peer average), Interactive What-If Simulator, aur GenAI Academic Mentor use kar sakte hain."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Role-Based Access Control (RBAC)</span>
+    <span class="pill">Teacher Cockpit</span>
+    <span class="pill">Student Personal Portal</span>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q4</span>
+    <span>Aapka dataset kaisa hai? Kitne students hain aur kya kya attributes hain?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Data modeling, sample size aur feature distribution knowledge.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, hamare database me <strong>500 students</strong> ka realistic academic records dataset hai across 4 engineering branches: Computer Science, Data Science, Artificial Intelligence, aur Information Technology.
+    <br>Har student ke paas 10 critical parameters hain: <code>Attendance (%)</code>, <code>Daily Study Hours</code>, <code>Final Marks</code>, <code>Internal Marks</code>, <code>Practical/Lab Score</code>, <code>Assignment Score</code>, <code>Quiz Average</code>, <code>Department</code>, <code>Semester</code>, aur derived <code>Performance Score</code>."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">N=500 Instances</span>
+    <span class="pill">4 Academic Branches</span>
+    <span class="pill">10 Continuous & Categorical Features</span>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section-header page-break">
+  <h2>Section 2: System Architecture & Tech Stack (तकनीकी सवाल)</h2>
+  <span class="section-tag">Total: 4 Questions</span>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q5</span>
+    <span>Aapne is project ke liye kaunsa Tech Stack choose kiya aur kyu?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Technology selection justification aur architectural maturity.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, humne reliable, lightweight aur modern stack choose kiya:
+    <br>• <strong>Backend: Python 3 & Flask:</strong> Flask lightweight micro-framework hai jo ML models (scikit-learn) aur AI libraries ke sath natively integrate hota hai bina kisi bloat ke.
+    <br>• <strong>Database: SQLite:</strong> Zero-configuration, serverless relational database jo fast file-based queries deta hai. Local development aur academic deployment ke liye ideal hai.
+    <br>• <strong>Frontend: Vanilla HTML5, CSS3 & Modern JavaScript:</strong> Humne heavy frameworks (React/Angular) ke bajaye pure CSS aur Vanilla JS use kiya taaki fast load time mile, zero dependency conflicts ho aur GitHub Pages par static build bina Node server ke bhi run kar sake.
+    <br>• <strong>ML & AI:</strong> Scikit-Learn (Random Forest) + Google Gemini 1.5 Flash REST API + Zero-downtime Local Heuristic Fallback Engine."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Python / Flask</span>
+    <span class="pill">SQLite</span>
+    <span class="pill">Vanilla JS (Zero-Bloat)</span>
+    <span class="pill">Scikit-Learn</span>
+    <span class="pill">Google Gemini REST API</span>
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q6</span>
+    <span>Aapke system ka Architecture kaisa hai? Request flow kaise hota hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Model-View-Controller (MVC) understanding aur end-to-end data pipeline.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, hamara architecture <strong>Model-View-Controller (MVC)</strong> pattern follow karta hai:
+    <br>1. <strong>View (Client):</strong> Browser par responsive UI render hoti hai jo AJAX/Fetch calls ke through asynchronous requests bhejti hai (e.g. <code>/api/ml-prediction</code>, <code>/api/genai-mentor</code>).
+    <br>2. <strong>Controller (Flask Routes):</strong> Request intercept karta hai, session validation/authentication check karta hai, aur payload ko parse karta hai.
+    <br>3. <strong>Model & Engines:</strong> Controller database se student record fetch karke <code>enrich()</code> function ke through calculate karta hai, fir <code>ml_engine.py</code> se ML prediction leta hai aur <code>genai_engine.py</code> se pedagogical response generate karke client ko JSON format me return karta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">MVC Architecture</span>
+    <span class="pill">RESTful API Endpoints</span>
+    <span class="pill">Asynchronous Fetch / JSON Payloads</span>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q7</span>
+    <span>Database Schema aur Authentication kaise structured hai? Passwords plain text me store hote hain kya?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Security best practices aur database normalization.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Nahi sir, passwords bilkul bhi plain text me store nahi hote. Hum <strong>SHA-256 cryptographic hashing</strong> use karte hain (<code>hashlib.sha256</code>).
+    <br>Schema me do primary relational tables hain:
+    <br>• <code>users</code> table: <code>id</code>, <code>username</code>, <code>password_hash</code>, <code>role</code> ('teacher'/'student'), <code>student_id</code> (Foreign Key).
+    <br>• <code>students</code> table: <code>Student_ID</code> (Primary Key), <code>Name</code>, <code>Department</code>, <code>Semester</code>, aur saare numerical academic scores.
+    <br>Saath hi SQL Injection se bachne ke liye humne <strong>parameterized queries</strong> (<code>cursor.execute('SELECT ... WHERE id=?', (val,))</code>) use kiye hain."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">SHA-256 Password Hashing</span>
+    <span class="pill">SQL Injection Prevention</span>
+    <span class="pill">Parameterized Prepared Statements</span>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q8</span>
+    <span>Aapka project GitHub Pages par live kaise chal raha hai jabki backend Python/Flask hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Web deployment, static vs dynamic architecture, and hybrid fallback strategies.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, ye hamare project ka bohot smart architectural feature hai!
+    <br>Hamare paas do deployment models hain:
+    <br>1. <strong>Full-Stack Dynamic Mode (Local / Cloud):</strong> Flask backend + SQLite + ML Joblib Bundle + Gemini API.
+    <br>2. <strong>Serverless Public Showcase Mode (GitHub Pages):</strong> GitHub Pages sirf static HTML/JS host kar sakta hai. Isliye humne <code>docs/index.html</code> me 500 students ka pre-computed JSON dataset embed kiya hai, aur Mathematical Engine + Machine Learning inference heuristics + Hinglish GenAI generator ko client-side JavaScript me implement kiya hai. Is wajah se project bina kisi paid server ke <strong>24x7 permanently live</strong> rehta hai kisi bhi phone ya laptop par!"</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Hybrid Deployment</span>
+    <span class="pill">Zero-Cost Permanent Hosting</span>
+    <span class="pill">Client-Side Edge Inference</span>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section-header page-break">
+  <h2>Section 3: Mathematical Formulation & Scoring Engine (फॉर्मूला और लॉजिक)</h2>
+  <span class="section-tag">Total: 3 Questions</span>
+</div>
+
+<!-- Q9 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q9</span>
+    <span>Performance Score calculate karne ka exact mathematical formula kya hai? Weights kaise decide kiye?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Core domain logic, weighted sum formulation, and grading policy understanding.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, Performance Score ek 100-point normalized index hai jo continuous evaluation rubrics par based hai:</p>
+    <div class="formula-box">
+      Performance Score = (Final_Marks &times; 0.35) + (Attendance &times; 0.15) + (Study_Score &times; 0.10) + (Assignment_Score &times; 0.10) + (Quiz_Average &times; 0.10) + (Practical_Score &times; 0.10) + (Internal_Marks &times; 0.10)
+    </div>
+    <p>• Yahan <code>Study_Score = min((Daily_Study_Hours / 6) &times; 100, 100)</code> normalize kiya gaya hai (6 hours = 100%).
+    <br>• <strong>Weights ki Justification:</strong>
+    <br> - <code>Final Marks (35%)</code>: Sabse bada summative indicator hai.
+    <br> - <code>Attendance (15%)</code>: Regularity aur classroom discipline ko reflect karta hai.
+    <br> - <code>Continuous Formative Components (50%)</code>: Assignments (10%), Quizzes (10%), Practicals (10%), Internals (10%), aur Study Hours (10%) milkar student ke day-to-day engagement ko measure karte hain."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Weighted Linear Combination</span>
+    <span class="pill">Normalization to 100-Point Scale</span>
+    <span class="pill">Summative vs Formative Rubrics</span>
+  </div>
+</div>
+
+<!-- Q10 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q10</span>
+    <span>Academic Risk Level (High, Medium, Low) kaise determine kiya jata hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Multi-criteria classification logic aur risk threshold boundaries.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, Risk sirf ek single test ke marks par decide nahi hota, balki humne <strong>Multi-Factor Risk Scoring Rule Engine</strong> banaya hai:
+    <br>• Agar Performance Score &lt; 50 &rarr; +3 Risk Points.
+    <br>• Agar Attendance &lt; 75% &rarr; +3 Risk Points (Institutional mandate violation).
+    <br>• Agar Practical Score &lt; 60% &rarr; +2 Risk Points (Hands-on deficiency).
+    <br>• Agar Internal Marks &lt; 60% &rarr; +2 Risk Points.
+    <br>• Agar Study Hours &lt; 2 hrs/day &rarr; +2 Risk Points.
+    <br><br><strong>Final Classification:</strong>
+    <br> - <code>Risk Points &ge; 5</code>: <strong>High Priority / High Risk</strong> (Immediate Teacher Intervention zaroori hai).
+    <br> - <code>Risk Points 2 to 4</code>: <strong>Medium Risk</strong> (Mentoring & Quiz Monitoring).
+    <br> - <code>Risk Points 0 to 1</code>: <strong>Low Risk</strong> (Academic Stability)."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Multi-Criteria Decision Analysis</span>
+    <span class="pill">Risk Thresholding</span>
+    <span class="pill">Additive Penalty Scoring</span>
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q11</span>
+    <span>Student Portal ka 'What-If Simulator' mathematical point of view se kaise kaam karta hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Sensitivity analysis aur dynamic simulation logic.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, What-If Simulator ek <strong>Prescriptive Sensitivity Analysis Tool</strong> hai.
+    <br>Jab student screen par Attendance slider ya Study Hours slider drag karta hai, toh client-side JavaScript student ke existing fixed parameters (Internals, Practicals, Final Marks) ko lock rakhta hai aur sirf modified parameters ke sath weighted formula re-evaluate karta hai:
+    <br><code>&Delta;Score = Simulated_Score &minus; Current_Baseline_Score</code>
+    <br>Isse student ko visual confirmation milti hai ki e.g. 'Agar mai attendance 72% se 85% kar lu, toh mera score +2.0 points badhkar Medium Risk se Good category me aa jayega'. Ye student ko behavioral change ke liye motivate karta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Sensitivity Analysis</span>
+    <span class="pill">Behavioral Nudge</span>
+    <span class="pill">Delta Score Evaluation</span>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section-header page-break">
+  <h2>Section 4: Machine Learning Integration (मशीन लर्निंग सवाल - सबसे महत्वपूर्ण)</h2>
+  <span class="section-tag">Total: 5 Questions</span>
+</div>
+
+<!-- Q12 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q12</span>
+    <span>Aapke project me already mathematical formula tha, toh Machine Learning model add karne ki kya zaroorat padi?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> WHY ML? Rule-based system vs Machine Learning ka critical distinction.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, ye bohot important question hai!
+    <br>• <strong>Rule-based formula</strong> deterministic aur rigid hota hai. Wo fixed linear weights assume karta hai, jabki real students me variables ke beech me <em>non-linear interactions</em> hote hain (e.g., kisi student ke study hours kam hain par practical bohot strong hai, toh uska final outcome linear sum se alag ho sakta hai).
+    <br>• <strong>Machine Learning Model</strong> historical academic data ke patterns se learn karta hai. Ye unseen students par <strong>generalized probabilistic prediction</strong> deta hai (e.g., student ke High Priority me jaane ki probability 72% hai).
+    <br>Isliye hamare project me dono hain: Formula provides transparent baseline, aur Machine Learning provides predictive foresight!"</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Deterministic vs Probabilistic</span>
+    <span class="pill">Non-Linear Feature Interaction</span>
+    <span class="pill">Generalization to Unseen Data</span>
+  </div>
+</div>
+
+<!-- Q13 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q13</span>
+    <span>Aapne kaunsa Machine Learning Algorithm use kiya aur dusre algorithms (jaise Linear Regression ya SVM) ke mukable kyu choose kiya?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Algorithm selection reasoning and trade-off analysis.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, humne <strong>Random Forest (Ensemble Learning)</strong> use kiya hai — <code>RandomForestRegressor</code> for score prediction aur <code>RandomForestClassifier</code> for Risk Priority.
+    <br><strong>Kyu Choose Kiya:</strong>
+    <br>1. <strong>Overfitting Resistance:</strong> Single Decision Tree jaldi overfit hota hai, lekin Random Forest multiple trees ka ensemble (bagging) use karta hai jisse variance reduce ho jata hai.
+    <br>2. <strong>Non-Linear Mapping:</strong> Linear Regression multi-dimensional tabular data ke complex interactions capture nahi kar pata, jabki Random Forest non-linear decision boundaries easily create karta hai.
+    <br>3. <strong>Feature Importance:</strong> Random Forest natively Gini Impurity ya Variance Reduction ke through har feature ka exact contribution percentage calculate karke deta hai.
+    <br>4. <strong>Robust to Outliers:</strong> Student marks data me occasional outliers hote hain, jisme Random Forest SVM ya Neural Networks se zyada stable rehta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Random Forest Ensemble</span>
+    <span class="pill">Bagging & Variance Reduction</span>
+    <span class="pill">Gini Impurity / Feature Importance</span>
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q14</span>
+    <span>Aapka Train/Test Split kya tha aur Model ke Evaluation Metrics kya aaye?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Quantitative verification, validation rigour, and exact statistical metrics.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, humne 500 records dataset par <strong>80:20 Train-Test split</strong> kiya tha (400 training instances, 100 test instances) with <code>random_state=42</code> for reproducibility.</p>
+    <p><strong>1. Regressor Metrics (Performance Score):</strong>
+    <br>• <strong>R² Score (Coefficient of Determination):</strong> <code>0.62</code> (62% variance explain ho raha hai).
+    <br>• <strong>Mean Absolute Error (MAE):</strong> <code>4.29 marks</code> (average error sirf 4 marks hai 100 me se).
+    <br>• <strong>Root Mean Squared Error (RMSE):</strong> <code>5.43 marks</code>.</p>
+    <p><strong>2. Classifier Metrics (Risk Category Classification):</strong>
+    <br>• <strong>Overall Accuracy:</strong> <code>91.0%</code>.
+    <br>• <strong>Precision & Recall:</strong> High Priority class ke liye Precision 0.89 aur Recall 0.86 aayi hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">80:20 Train/Test Split</span>
+    <span class="pill">R² = 0.62 | MAE = 4.29</span>
+    <span class="pill">Accuracy = 91.0%</span>
+    <span class="pill">Serialized in student_ml_bundle.joblib</span>
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q15</span>
+    <span>Model ke analysis me sabse important features kaunse nikle? (Feature Importance)</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Explainable AI (XAI) aur feature engineering insights.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, Random Forest model ne feature importances calculate karke di:
+    <br>1. <strong>Final Marks (~45% weight):</strong> Sabse dominant predictor hai.
+    <br>2. <strong>Attendance (~18% weight):</strong> Second highest predictor hai, kyunki low attendance sidha internal aur practical performance ko drop karti hai.
+    <br>3. <strong>Internal Marks (~12% weight):</strong> Continuous academic standing ko reflect karta hai.
+    <br>4. <strong>Practical Score & Quizzes (~10% each):</strong> Hands-on technical understanding reflect karte hain.
+    <br>5. <strong>Study Hours (~5% weight):</strong> Self-study discipline measure karta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Explainable AI (XAI)</span>
+    <span class="pill">Feature Importance Ranking</span>
+    <span class="pill">Gini-based Feature Weights</span>
+  </div>
+</div>
+
+<!-- Q16 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q16</span>
+    <span>Aapne trained ML model ko production me kaise deploy aur integrate kiya hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> MLOps, model serialization, and pipeline integration.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, humne trained models ko <strong>joblib</strong> library ke through serialize karke ek single bundle banaya: <code>models/student_ml_bundle.joblib</code>.
+    <br>Is bundle me:
+    <br>• Trained <code>RandomForestRegressor</code>
+    <br>• Trained <code>RandomForestClassifier</code>
+    <br>• Scaler / Feature Column Names
+    <br>• Pre-computed Feature Importances aur Evaluation Metrics hain.
+    <br>Flask backend startup par is file ko <strong>lazy-load</strong> karta hai singleton pattern me, aur jab bhi <code>/api/ml-prediction</code> endpoint par request aati hai, model instantly microsecond me prediction aur class probabilities return karta hai."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Joblib Serialization</span>
+    <span class="pill">Singleton Lazy-Loading</span>
+    <span class="pill">Low-Latency Inference Pipeline</span>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section-header page-break">
+  <h2>Section 5: Generative AI & Hinglish Engine (जेनरेटिव एआई सवाल)</h2>
+  <span class="section-tag">Total: 4 Questions</span>
+</div>
+
+<!-- Q17 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q17</span>
+    <span>Generative AI ka is project me kya role hai? Normal static recommendations se ye better kyu hai?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> GenAI value proposition vs hardcoded if-else statements.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, conventional systems me recommendations hardcoded hoti hain — jaise 'Attendance badhao' ya 'Marks sudharo'. Har student ko wahi same boring sentence dikhta hai.
+    <br><strong>Generative AI ka Role:</strong>
+    <br>Hamara system student ke pure record (Name, Branch, Marks, Exact Weak Points, Attendance) ko dynamic prompt me inject karta hai. AI context samajhkar:
+    <br>• Student ke liye <strong>7-Day Personalized Routine</strong> banata hai jisme weak subject ko subah 2 ghante padhne ka structured plan hota hai.
+    <br>• Teacher ke liye 1-click me personalized <strong>Parent Advisory Letter</strong> aur <strong>4-Week Remedial Plan</strong> draft karta hai jisme student ka naam, department aur exact target areas shamil hote hain."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Contextual Prompt Engineering</span>
+    <span class="pill">Dynamic Pedagogical Synthesis</span>
+    <span class="pill">N=1 Hyper-Personalization</span>
+  </div>
+</div>
+
+<!-- Q18 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q18</span>
+    <span>Aapne Generative AI me Hinglish support kaise achieve kiya? System prompt kaisa tha?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Prompt engineering, system instructions, and multilingual adaptation.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, India me students technical concepts natural <strong>Hinglish (Hindi written in Roman script)</strong> me sabse comfortable samajhte hain.
+    <br>Humne Google Gemini 1.5 Flash API ke call me ek specialized <strong>System Instruction</strong> inject kiya:
+    <br><em>'Generate the response in friendly, clear, natural Hinglish (Hindi written in Roman English script). Use natural conversational Hindi words like "karo", "dhyaan do", "focus rakho", but keep technical academic terms in English like "attendance", "practical lab", "quiz".'</em>
+    <br>Saath hi UI me ek <strong>Language Toggle Pill</strong> diya hai taaki student ya teacher apni choice se <code>🇮🇳 Hinglish</code> ya <code>🌐 English</code> choose kar sakein."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">System Instruction Conditioning</span>
+    <span class="pill">Romanized Hindi Code-Switching</span>
+    <span class="pill">Interactive Language Selector</span>
+  </div>
+</div>
+
+<!-- Q19 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q19</span>
+    <span>Agar internet band ho jaye ya Google Gemini API ka quota khatam ho jaye, toh kya aapka AI fail ho jayega?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Fault tolerance, resilience, graceful degradation, and production reliability.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"<strong>Nahi sir, bilkul fail nahi hoga!</strong> Humne iske liye <strong>Zero-Downtime Local Pedagogical Fallback Engine</strong> design kiya hai!
+    <br>Jab Gemini API call hoti hai, code <code>try-except</code> block me execute hota hai. Agar network error aaye, API key missing ho, ya rate limit hit ho jaye, system automatically local pedagogical heuristics par switch ho jata hai.
+    <br>Local engine student ke exact metrics (Weakness, Attendance, Score) ko extract karke instant multi-paragraph Hinglish advice synthesize kar deta hai. Isse system <strong>100% resilient</strong> rehta hai!"</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Zero-Downtime Resilience</span>
+    <span class="pill">Graceful Degradation</span>
+    <span class="pill">Deterministic Heuristic Fallback</span>
+  </div>
+</div>
+
+<!-- Q20 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q20</span>
+    <span>AI Hallucination se bachne ke liye aapne kya guardrails lagaye hain?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Responsible AI, factual grounding, and guardrails against hallucination.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, GenAI models kabhi-kabhi hallucinate karte hain ya out-of-context marks claim kar dete hain. Isse bachne ke liye humne <strong>Strict Grounding Guardrails</strong> lagaye hain:
+    <br>1. <strong>Temperature Control:</strong> API call me temperature <code>0.4</code> rakha hai taaki output deterministic aur focused rahe.
+    <br>2. <strong>Fact Injection:</strong> Student ke verified database metrics (Score, Attendance, Weakness) ko explicitly prompt context me anchor kiya hai.
+    <br>3. <strong>Negative Prompt Constraints:</strong> System instruction me clearly specified hai: <em>'Stick strictly to the provided metrics. Do not fabricate marks or department information.'</em>"</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Factual Grounding</span>
+    <span class="pill">Low Temperature (0.4)</span>
+    <span class="pill">Contextual Anchoring</span>
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section-header page-break">
+  <h2>Section 6: Testing, Edge Cases & Future Scope (भविष्य और सुधार)</h2>
+  <span class="section-tag">Total: 4 Questions</span>
+</div>
+
+<!-- Q21 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q21</span>
+    <span>Aapne is project ki testing kaise ki hai? Kuch major edge cases batayein.</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Software engineering discipline, edge case handling, and QA validation.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, humne unit testing, integration testing aur boundary testing perform ki:
+    <br>• <strong>Edge Case 1 (Extreme Sliders):</strong> What-If simulator me student attendance 0% ya 100% kare, toh score formula <code>min/max</code> constraints ke andar 0-100 range me hi rehna chahiye.
+    <br>• <strong>Edge Case 2 (Missing / Inactive API Key):</strong> Network disconnect karke check kiya ki local fallback seamlessly activate hota hai ya nahi.
+    <br>• <strong>Edge Case 3 (Zero Study Hours):</strong> Division-by-zero ya NaN handling check ki gayi.
+    <br>• <strong>API Test Scripts:</strong> Automated Python test script ke through <code>app.test_client()</code> se endpoints test kiye gaye."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Boundary Value Analysis</span>
+    <span class="pill">Automated Integration Tests</span>
+    <span class="pill">Graceful Exception Handling</span>
+  </div>
+</div>
+
+<!-- Q22 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q22</span>
+    <span>Is project ki Limitations kya hain?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Self-awareness, critical thinking, and intellectual honesty.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, honesty ke sath do practical limitations hain:
+    <br>1. <strong>Cross-Semester Time-Series Data:</strong> Abhi ka model single-semester snapshot analyze karta hai. Agar student ke previous 4 semesters ka progression data shamil ho, toh trend prediction aur accurate hogi.
+    <br>2. <strong>Psychometric / Socio-Economic Factors:</strong> Real world me student performance par health, stress aur financial issues ka asar hota hai, jo current academic dataset me track nahi hota."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Cross-Sectional vs Longitudinal Data</span>
+    <span class="pill">Psychometric Latent Factors</span>
+  </div>
+</div>
+
+<!-- Q23 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q23</span>
+    <span>Is project ka Future Scope kya hai? Agar aapko 3 mahine aur milein toh kya naya add karenge?</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Vision, scalability roadmap, and innovation mindset.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, future roadmap me 4 high-impact additions hain:
+    <br>1. <strong>1-Click WhatsApp API Integration:</strong> Teacher portal se direct parents ke phone par automated attendance warning aur performance advisory dispatch hona.
+    <br>2. <strong>Voice-Interactive AI Tutor:</strong> Web Speech API use karke student bol kar doubt poochega aur system bol kar samjhayega.
+    <br>3. <strong>Deep Learning LSTM / Transformer Models:</strong> Multi-semester time-series marks sequence ko predict karne ke liye.
+    <br>4. <strong>Automated LMS Integration:</strong> Moodle ya Google Classroom ke sath direct webhook integration."</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">WhatsApp Business Webhooks</span>
+    <span class="pill">Voice AI (Web Speech API)</span>
+    <span class="pill">Long Short-Term Memory (LSTM)</span>
+    <span class="pill">LMS Interoperability (LTI Standards)</span>
+  </div>
+</div>
+
+<!-- Q24 -->
+<div class="q-card">
+  <div class="q-title">
+    <span class="q-num">Q24</span>
+    <span>Examiner agar bole: "Aapka project mere college me lagana ho toh kitna time aur infrastructure lagega?"</span>
+  </div>
+  <div class="examiner-intent">
+    <strong>Examiner Kya Check Kar Raha Hai:</strong> Commercial viability, deployment readiness, and operational cost.
+  </div>
+  <div class="answer-box">
+    <p><strong>Aapka Ideal Jawab (Hinglish):</strong></p>
+    <p>"Sir, hamara system <strong>Zero-Hardware Overhead</strong> ke sath design kiya gaya hai!
+    <br>College ko kisi expensive GPU server ki zaroorat nahi hai:
+    <br>• Ye kisi bhi normal 2-core CPU server ya Docker container par run ho sakta hai.
+    <br>• Database CSV file upload se 5 minute me migrate ho sakta hai.
+    <br>• Students aur teachers apne mobile ya laptop browser se direct login kar sakte hain bina koi software install kiye.
+    <br>Total setup time sirf <strong>1 se 2 ghante</strong> ka hai!"</p>
+  </div>
+  <div class="key-terms">
+    <span class="label">Technical Keywords:</span>
+    <span class="pill">Containerized Deployment</span>
+    <span class="pill">Zero Hardware Overhead</span>
+    <span class="pill">CSV Batch Onboarding</span>
+  </div>
+</div>
+
+<!-- SECTION 7 -->
+<div class="section-header page-break">
+  <h2>Section 7: Rapid-Fire One-Liner Viva Questions (फटाफट रिवीजन)</h2>
+  <span class="section-tag">Quick 10 Bullets</span>
+</div>
+
+<div class="q-card">
+  <div class="answer-box" style="font-size:12px; line-height:1.7;">
+    <p>⚡ <strong>1. Random Forest Classifier ki accuracy kitni aayi?</strong><br>
+    &rarr; <em>"Sir, exactly 91.0% accuracy aayi hai 80:20 train-test split par."</em></p>
+
+    <p>⚡ <strong>2. Random Forest Regressor ka R² Score kya hai?</strong><br>
+    &rarr; <em>"Sir, R² = 0.62 aur Mean Absolute Error (MAE) = 4.29 marks."</em></p>
+
+    <p>⚡ <strong>3. Performance Score me sabse zyada weight kiska hai?</strong><br>
+    &rarr; <em>"Final Marks ka hai, jo ki 35% hai. Second highest Attendance (15%) hai."</em></p>
+
+    <p>⚡ <strong>4. High Risk student hone ke do sabse common triggers kya hain?</strong><br>
+    &rarr; <em>"Attendance &lt; 70% hona aur Performance Score &lt; 40 hona."</em></p>
+
+    <p>⚡ <strong>5. Password secure karne ke liye kaunsi hashing use hui hai?</strong><br>
+    &rarr; <em>"SHA-256 cryptographic hashing algorithm."</em></p>
+
+    <p>⚡ <strong>6. Generative AI ke liye kaunsa model use kiya hai?</strong><br>
+    &rarr; <em>"Google Gemini 1.5 Flash API with temperature 0.4, backed by an offline local engine."</em></p>
+
+    <p>⚡ <strong>7. Agar internet chala jaye toh GenAI kaam karega?</strong><br>
+    &rarr; <em>"Haan sir, hamara Zero-Downtime Local Pedagogical Heuristic Engine bina internet ke bhi instant Hinglish guidance generate karta hai."</em></p>
+
+    <p>⚡ <strong>8. What-If simulator ka primary purpose kya hai?</strong><br>
+    &rarr; <em>"Student ko real-time me dikhana ki attendance aur study hours badhane se unka projected score kitna improve hoga."</em></p>
+
+    <p>⚡ <strong>9. Machine learning model ka bundle file kahan save hai?</strong><br>
+    &rarr; <em>"<code>models/student_ml_bundle.joblib</code> me serialized hai."</em></p>
+
+    <p>⚡ <strong>10. Ye project live kahan dekh sakte hain?</strong><br>
+    &rarr; <em>"GitHub Pages par permanently live hai: <code>https://satyajeets657-hub.github.io/Student-Performance-Intelligence/</code>"</em></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top: 30px; padding: 14px 20px; background: #f8fafc; border-top: 2px solid #e2e8f0; border-radius: 8px; text-align: center; font-size: 11.5px; color: #64748b;">
+  <strong>Student Performance Intelligence (SPI)</strong> &bull; Complete Viva & Defense Guide &bull; Designed for Engineering Viva, Capstone Defense & Technical Interviews.
+</div>
+
+</body>
+</html>
